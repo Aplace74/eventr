@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_06_04_132817) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "participation_id"
+    t.index ["participation_id"], name: "index_events_on_participation_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -69,9 +71,6 @@ ActiveRecord::Schema.define(version: 2019_06_04_132817) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "avatar"
-    t.string "first_name"
-    t.string "last_name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -85,6 +84,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_132817) do
 
   add_foreign_key "contributions", "participations"
   add_foreign_key "contributions", "supplies"
+  add_foreign_key "events", "participations"
   add_foreign_key "events", "users"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
