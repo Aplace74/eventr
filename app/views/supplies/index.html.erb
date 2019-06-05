@@ -1,0 +1,38 @@
+<div class="banner">
+  <div>
+    <h2><%= @event.title %></h2>
+    <p>
+      <strong>Date:</strong>
+      <%= @event.start_date %> au <%= @event.end_date %>
+    </p>
+    <p><%= @event.address %></p>
+  </div>
+  <div id="map-button">
+    <i class="fas fa-map-marker-alt"></i>
+    <p>Map</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="description">
+    <p><strong>Infos utiles:</strong> <%= @event.description %></p>
+    <%=  %>
+  </div>
+</div>
+
+<div class="separator">
+  <h4>Qui ramène quoi?</h4>
+</div>
+
+<div class="container">
+
+  <button class="category" type="button" data-toggle="collapse" data-target="#nourriture" aria-expanded="false" aria-controls="nourriture">
+    <h4>Nourriture ( ? / <%= @feed.size %> )</h4>
+  </button>
+  <div class="category-list collapse" id="nourriture">
+    <% @feed.each do |supply| %>
+      <%= supply.title %>
+    <% end %>
+  </div>
+
+</div>
