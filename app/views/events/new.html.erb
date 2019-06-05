@@ -1,17 +1,30 @@
-<div class="banner_home">
-    <div class="title text-center">
-      <h2>Créer un événement</h2>
-    </div>
+<div class="new">
 
-    <div class="form">
+    <h1>Créer un événement</h1>
+
+    <div>
       <%= simple_form_for [@event] do |f| %>
         <div class="form-inputs">
             <%= f.input :title,
-                        placeholder: "Title",
+                        placeholder: "Titre de l'événement",
                         label: false,
                         required: true,
-                        autofocus: true,
-                        input_html: { autocomplete: "Title" } %>
+                        autofocus: true %>
+            <%= f.input :address,
+                        placeholder: "Adresse",
+                        label: false,
+                        required: true,
+                        autofocus: true %>
+            <%= f.input :zipcode,
+                        placeholder: "Code postal",
+                        label: false,
+                        required: true,
+                        autofocus: true %>
+            <%= f.input :city,
+                        placeholder: "Ville",
+                        label: false,
+                        required: true,
+                        autofocus: true %>
             <%= f.input :start_date,
                         as: :string,
                         placeholder: "Date début",
@@ -21,7 +34,7 @@
                         input_html: { class: "datepicker" } %>
             <%= f.input :end_date,
                         as: :string,
-                        placeholder: "Date début",
+                        placeholder: "Date fin",
                         label: false,
                         required: true,
                         autofocus: true,
@@ -30,8 +43,9 @@
                         placeholder: "Description",
                         label: false,
                         required: true,
-                        autofocus: true,
-                      input_html: { autocomplete: "Description" } %>  
+                        autofocus: true %> 
+            <%= f.input :picture, required: false %>
+            <%= f.input :picture_cache, as: :hidden %> 
         </div>
 
         <div class="form-actions">
