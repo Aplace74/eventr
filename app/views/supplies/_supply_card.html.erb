@@ -1,0 +1,8 @@
+<div class="supply-card">
+  <strong><%= supply.quantity %> <%= supply.title %></strong>
+  <p><%= supply.quantity %> restants</p>
+  <%= simple_form_for (@supplies) do |f| %>
+    <%= f.input :quantity, collection: (0..supply.size).to_a %>
+    <%= f.submit "Go!", class: "btn-base btn-green" %>
+  <% end %>
+</div>
