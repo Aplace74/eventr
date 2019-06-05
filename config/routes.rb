@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     resources :participations, only: [:index, :update, :destroy]
     resources :supplies, only: [:index, :create, :update, :destroy]
   end
+
+  # static pages
+  get "/composants" => "pages#composants"
+
 end
