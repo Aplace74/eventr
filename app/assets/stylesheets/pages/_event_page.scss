@@ -4,7 +4,30 @@
   padding: 10px;
 }
 
+
 .event_container {
   margin: 0 auto;
   text-align: center;
+}
+
+.category {
+  margin: 15px 0;
+  box-shadow: 0 1px 4px gray;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.category-title {
+  padding: 10px 0;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  h4 {
+    margin: 0;
+  }
+}
+
+.supply-card {
+  border-top: 1px solid rgba(128, 128, 128, 0.5);
 }

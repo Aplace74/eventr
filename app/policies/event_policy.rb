@@ -5,7 +5,17 @@ class EventPolicy < ApplicationPolicy
     end
   end
 
+
   # def index?
   #   true
   # end
+
+  def new?
+    true
+  end
+
+  def create?
+    new?
+  end
+
 end
