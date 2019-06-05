@@ -2,18 +2,21 @@
 
   <div class="banner_home">
     <div class="title">
-      <h1>Bienvenue sur EventR</h1>
+      <h2>Bienvenue sur</h2>
+      <h1>EventR</h1>
     </div>
 
     <div class="btn_banner">
-      <%= link_to "Créer votre premier évènement", new_event_path %>
+      <%= link_to "Créer votre premier évènement", new_event_path, class: "btn-base btn-green btn-large" %>
       <br>
-      <%= link_to "Accèder à mon compte", new_user_session_path %>
+      <%= link_to "Accèder à mon compte", new_user_session_path, class: "btn-base btn-blue btn-large" %>
+      <br>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
     </div>
   </div>  
   
   <div class="div_logos">
-    <p>Nos fonctionnalités :</p>
+    <h3>Nos fonctionnalités :</h3>
 
     <img class="logo" src="https://res.cloudinary.com/dwptvy074/image/upload/v1559722505/iconfinder_calendar_1291765_udilhs.png" alt="agenda">
 
@@ -29,6 +32,8 @@
 
     <h2>Profiter de votre évènement</h2>
 
-    <%= button_to "Créer votre premier évènement", new_event_path %>
+    <div class="div_btn_footer">
+      <%= button_to "Créer votre premier évènement", new_event_path, class: "btn-base btn-green btn-large" %>
+    </div>
   </div>
 </div>

@@ -1,0 +1,15 @@
+#event-header {
+    background-position: center;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+        .map {
+            opacity: .8;
+            .fa-map-marked-alt {color: black;}
+        }
+        h1 {
+            font-size: 26px;
+        }
+}

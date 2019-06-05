@@ -1,25 +1,59 @@
 <div class="container">
-    <div style="max-width: 375px; margin: 0 auto; border: solid 1px #cccccc; padding: 20px;">
-        <h1 class="text-center">Composants</h1>
-        <hr>
-        <!--BOUTONS-->
-        <p class="text-center"><strong>Boutons</strong></p>
+    <div style="max-width: 375px; margin: 0 auto; border: solid 1px #cccccc; padding: 20px 0;">
+        <div style="padding: 20px;">
+            <h1 class="text-center">Composants</h1>
+            <hr>
+            <!--BOUTONS-->
+            <p class="text-center"><strong>Boutons</strong><p>
 
-        <p class="text-center"><a href="#" class="btn-base btn-green">bouton basique green</a></p>
-        <p><pre><xmp><a href="#" class="btn-base btn-green">bouton basique green</a></xmp></pre></p>
+            <p class="text-center"><a href="#" class="btn-base btn-green">bouton basique green</a></p>
+            <p><pre><xmp><a href="#" class="btn-base btn-green">bouton basique green</a></xmp></pre></p>
 
-        <p class="text-center"><a href="#" class="btn-base btn-blue">bouton basique blue</a></p>
-        <p><pre><xmp><a href="#" class="btn-base btn-blue">bouton basique blue</a></xmp></pre></p>
+            <p class="text-center"><a href="#" class="btn-base btn-blue">bouton basique blue</a></p>
+            <p><pre><xmp><a href="#" class="btn-base btn-blue">bouton basique blue</a></xmp></pre></p>
 
-        <p><a href="#" class="btn-base btn-green btn-large">Texte bouton full width</a></p>
-        <p><pre><xmp><a href="#" class="btn-base btn-green btn-large">Texte bouton full width</a></xmp></pre></p>
+            <p><a href="#" class="btn-base btn-green btn-large">Texte bouton full width</a></p>
+            <p><pre><xmp><a href="#" class="btn-base btn-green btn-large">Texte bouton full width</a></xmp></pre></p>
 
-        <p class="text-center"><a href="#" class="btn-base btn-green btn-thin">Texte bouton thin</a></p>
-        <p><pre><xmp><a href="#" class="btn-base btn-green btn-thin">Texte bouton</a></xmp></pre></p>
+            <p class="text-center"><a href="#" class="btn-base btn-green btn-thin">Texte bouton thin</a></p>
+            <p><pre><xmp><a href="#" class="btn-base btn-green btn-thin">Texte bouton</a></xmp></pre></p>
+            
+            <hr>
+        </div>
+
+        <!--NAVBAR-->
+        <div class="navbar-lewagon">
+            <i class="fas fa-home"></i>
+            <a href="#">Invités</a>
+            <a href="#" class="active">Détails</a>
+            <a href="#">Ma liste</a>
+            <img class="avatar" src ="<%= image_path("logo.png") %>">
+        </div>
+
+        <br><br>
+
+        <!--Event page header-->
+                  
         
         <hr>
         <p class="text-center"><strong>Card</strong></p>
         <%= render 'shared/card' %>
+        <div id="event-header" style ="background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
+                  url('<%= image_path("bbq-dummy-bg-sm.jpg") %>');">
+            <div class="details">
+                <h1 class="event-header-title">Titre de l'événement - un peu plus long</h1>
+                <p class="event-header-dates"><strong>Date : </strong> 12 janvier 2020</p>
+                <p class="event-header-address">15 boulevard de la république, Marc-en Baroeul</p>
+            </div>
+            <div class="map">
+                <span class="fa-stack fa-2x">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-map-marked-alt fa-stack-1x fa-inverse"></i>
+                </span>
+            </div>
+        </div>
+
+
 
     </div>
 </div>
