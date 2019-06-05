@@ -1,22 +1,39 @@
 <div class="card-event">
 	<div class="picture">
 		<img src="https://images.unsplash.com/photo-1521473717695-e8f5635b7f6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="belle image">
-		<h4>Title</h4>
+		<h4><%= event.title %></h4>
 		<div class="pelette">
 			<div class="date">
-				<div class="p day">12</div>
-				<div class="p month">Mars</div>
+				<div class="p day"><%= event.start_date.strftime("%d") %></div>
+				<div class="p month"><%= event.start_date.strftime("%b") %></div>
 			</div>
 		</div>
 	</div>
 	<div class="infos">
 		<div class="supplies">
-			dfwbkvjbqvrjhb
+			<span class="badge-pill badge badge-dark">
+      <i class="fas fa-drumstick-bite"></i>
+      3 
+			</span>
+			<span class="badge-pill badge badge-dark">
+				<i class="fas fa-beer"></i>
+				3
+			</span>
+			<span class="badge-pill badge badge-dark">
+				<i class="fas fa-music"></i>
+				3
+			</span>
 		</div>
 		<div class="guests">
-				<img class="avatar-bordered" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=670&q=80" alt="avatar">
-        <img class="avatar-bordered" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=670&q=80" alt="avatar">
-        <img class="avatar-bordered" src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=670&q=80" alt="avatar">
+			<div class="img">
+      <%= event.participations.first(4).each do |participant| %>
+        <%= cl_image_tag participant.photo, gravity: :face, crop: :fill, class: "avatar-bordered" %>
+        <% end %>
+			</div>
+			<p><%= helper.pluralize(3, 'participant') %> </p>
 		</div>
+	</div>
+	<div class="organizer">
+  <%= cl_image_tag e.user.photo, gravity: :face, crop: :fill, class: "avatar-bordered" %>
 	</div>
 </div>
