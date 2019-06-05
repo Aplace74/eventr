@@ -1,0 +1,27 @@
+<div class="banner">
+  <div>
+    <h2><%= @event.title %></h2>
+    <p>
+      <strong>Date:</strong>
+      <%= @event.start_date %> au <%= @event.end_date %>
+    </p>
+    <p><%= @event.address %></p>
+  </div>
+  <div id="map-button">
+    <i class="fas fa-map-marker-alt"></i>
+    <p>Map</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="description">
+    <p><strong>Infos utiles:</strong> <%= @event.description %></p>
+    <%=  %>
+  </div>
+
+  <ul>
+    <% @supplies.each do |supply| %>
+      <li><%= supply.title %></li>
+    <% end %>
+  </ul>
+</div>
