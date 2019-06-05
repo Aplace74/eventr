@@ -1,2 +1,34 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="main_container">
+
+  <div class="banner_home">
+    <div class="title">
+      <h1>Bienvenue sur EventR</h1>
+    </div>
+
+    <div class="btn_banner">
+      <%= link_to "Créer votre premier évènement", new_event_path %>
+      <br>
+      <%= link_to "Accèder à mon compte", new_user_session_path %>
+    </div>
+  </div>  
+  
+  <div class="div_logos">
+    <p>Nos fonctionnalités :</p>
+
+    <img class="logo" src="https://res.cloudinary.com/dwptvy074/image/upload/v1559722505/iconfinder_calendar_1291765_udilhs.png" alt="agenda">
+
+    <h2>Créer un évènement</h2>
+
+    <img class="logo" src="https://res.cloudinary.com/dwptvy074/image/upload/v1559722511/iconfinder_people-group-team-peoples-friend_3643747_t7ring.png" alt="friends">
+
+    <h2>Inviter vos amis</h2>
+
+    <img class="logo" src="https://res.cloudinary.com/dwptvy074/image/upload/v1559722518/iconfinder_money_box_172507_rvimqa.png" alt="money">
+
+    <h2>Partager vos dépenses efficacement</h2>
+
+    <h2>Profiter de votre évènement</h2>
+
+    <%= button_to "Créer votre premier évènement", new_event_path %>
+  </div>
+</div>
