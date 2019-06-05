@@ -7,5 +7,5 @@ class Event < ApplicationRecord
 
   validates :title, :address, :city, :zipcode, :start_date, :end_date, presence: true
   validates :start_date, :end_date, inclusion: { in: (Date.today..Date.today+1.years), message: "Invalid date" }
-
+  mount_uploader :picture, PhotoUploader
 end
