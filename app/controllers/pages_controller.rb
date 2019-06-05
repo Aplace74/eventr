@@ -5,5 +5,6 @@ class PagesController < ApplicationController
   end
 
   def composants
+    @user = current_user
   end
 end
