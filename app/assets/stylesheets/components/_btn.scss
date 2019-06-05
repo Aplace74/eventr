@@ -15,11 +15,11 @@
 }
 
 .btn-green {
-    background: linear-gradient(342.3deg, rgba(35, 169, 244, 0.79) -42.12%, rgba(255, 255, 255, 0) 152.3%), #3EEA5B;    
+    background: $green-bg-btn
 }
 
 .btn-blue {
-    background: linear-gradient(350.85deg, rgba(35, 169, 244, 0.79) -42.12%, rgba(255, 255, 255, 0) 152.3%), #4566DB;
+    background: $blue-bg-btn
 }
 
 .btn-large {

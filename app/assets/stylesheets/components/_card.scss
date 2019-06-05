@@ -12,6 +12,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
     }
     h4 {
       color: white;
@@ -24,15 +26,15 @@
     .pelette {
       position: absolute;
       text-align: center;
-      color: black;
+      color: white;
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background-color: rgba(white, 0.7);
+      background: $blue-bg;
       top: 5px;
       right: 10px;
       .date {
-        padding-top: 7px;
+        padding-top: 10px;
         .p {
           vertical-align: middle;
           line-height: normal;
@@ -44,5 +46,8 @@
         }
       }
     }
+  }
+  .infos {
+    
   }
 }
