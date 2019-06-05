@@ -9,14 +9,12 @@
 require 'date'
 
 puts "Clearing DB..."
+Contribution.destroy_all
+Participation.destroy_all
 Supply.destroy_all
 Category.destroy_all
-Participation.destroy_all
-Contribution.destroy_all
 Event.destroy_all
 User.destroy_all
-
-
 
 puts "Cleaning OK"
 puts "................."
@@ -140,6 +138,15 @@ vin = Supply.create!(
   event_id: piscine[:id]
 )
 
+music = Supply.create!(
+  title: "Enceintes",
+  quantity: 1,
+  created_at: Date.new(2019, 6, 5),
+  updated_at: Date.new(2019, 6, 5),
+  category_id: other[:id],
+  event_id: piscine[:id]
+)
+
 puts "Supplies OK"
 puts "........................"
 puts "Adding Participations..."
@@ -148,6 +155,24 @@ part_max = Participation.create!(
   confirmed: true,
   event_id: piscine[:id],
   user_id: aym[:id]
+)
+
+part_aym = Participation.create!(
+  confirmed: true,
+  event_id: anniversaire[:id],
+  user_id: anto[:id]
+)
+
+part_anto = Participation.create!(
+  confirmed: true,
+  event_id: barbecue[:id],
+  user_id: max[:id]
+)
+
+part_chris = Participation.create!(
+  confirmed: true,
+  event_id: barbecue[:id],
+  user_id: max[:id]
 )
 
 puts "Participations OK"
@@ -160,6 +185,28 @@ contrib_max = Contribution.create!(
   supply_id: baguettes[:id],
   participation_id: part_max[:id]
 )
+
+contrib_aym = Contribution.create!(
+  part: 1,
+  state: true,
+  supply_id: music[:id],
+  participation_id: part_aym[:id]
+)
+
+contrib_chris = Contribution.create!(
+  part: 3,
+  state: true,
+  supply_id: saucisses[:id],
+  participation_id: part_chris[:id]
+)
+
+contrib_anto = Contribution.create!(
+  part: 6,
+  state: true,
+  supply_id: saucisses[:id],
+  participation_id: part_anto[:id]
+)
+
 
 puts "Contributions OK"
 puts "Seed DONE !!! "
