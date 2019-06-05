@@ -9,6 +9,8 @@
       <%= link_to "Créer votre premier évènement", new_event_path %>
       <br>
       <%= link_to "Accèder à mon compte", new_user_session_path %>
+      <br>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
     </div>
   </div>  
   
