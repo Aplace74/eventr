@@ -1,6 +1,7 @@
 class SuppliesController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
+    @contribution = Contribution.new
     @supplies = policy_scope(Supply).where(event_id: @event.id)
     authorize @supplies
     @feed = @supplies.where(category_id: 2)
