@@ -3,5 +3,9 @@
   <a href="#">Invités</a>
   <a href="#" class="active">Détails</a>
   <a href="#">Ma liste</a>
-  <%= cl_image_tag current_user.avatar %>
+  <% if user_signed_in? %>
+    <%= cl_image_tag user.avatar, class: "avatar" %>
+  <% else %>
+    <img src="<%= image_path("person-dummy.jpg") %>" class="avatar">
+  <% end %>
 </div>
