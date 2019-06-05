@@ -1,0 +1,26 @@
+<div class="event_container">
+  <div class="event_banner">
+    <h1>Bonjour <%= current_user.first_name %></h1>
+    <%= cl_image_tag current_user.avatar %>
+  </div>
+  
+  <div>
+    <%= link_to 'Créer un évènement', new_event_path, class:"btn-base btn-green" %>
+  </div>
+
+  <div>
+    <h2>J'organise</h2>
+  </div>  
+
+  <div>
+    <h2>Je participe</h2>
+    <% current_user.events.each do |event| %>
+      <%= event.title %>  
+    <% end %>
+  </div>  
+
+  <div>
+    <h2>Archivé(s)</h2>
+  </div>
+  
+</div>

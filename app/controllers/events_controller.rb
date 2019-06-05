@@ -1,4 +1,11 @@
 class EventsController < ApplicationController
+
+
+  def index
+    @events = policy_scope(Event)
+  end
+
+
     def new
         @event = Event.new
         @event.user = current_user
@@ -21,4 +28,5 @@ class EventsController < ApplicationController
     def event_params
         params.require(:event).permit!
     end
+
 end

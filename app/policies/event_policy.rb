@@ -1,9 +1,14 @@
 class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.all.where(user: user)
     end
   end
+
+
+  # def index?
+  #   true
+  # end
 
   def new?
     true
@@ -12,4 +17,5 @@ class EventPolicy < ApplicationPolicy
   def create?
     new?
   end
+
 end
