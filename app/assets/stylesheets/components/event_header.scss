@@ -1,0 +1,17 @@
+#event-header {
+    background-position: center;
+    width: 100%;
+    padding: 20px;
+    display: relative;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    color: white;
+        .map {
+            opacity: .8;
+            .fa-map-marked-alt {color: black;}
+        }
+        h1 {
+            font-size: 26px;
+        }
+}
