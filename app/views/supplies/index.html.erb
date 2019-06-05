@@ -31,7 +31,7 @@
   <h4>Qui ramène quoi?</h4>
 </div>
 
-<div class="container">
+<div class="list">
 
   <% @categories.each do |category| %>
     <% supplies = @supplies.where(category_id: category.id) %>
@@ -44,7 +44,9 @@
       </a>
       <div class="category-list collapse" id="<%= category.name %>">
         <% supplies.each do |supply| %>
-          <%= render "supply_card", supply: supply %>
+          <% rest = supply.quantity %>
+          <% supply.contributions.each { |c| rest -= c.part } %>
+          <%= render "supply_card", supply: supply, rest: rest %>
         <% end %>
         <button type="button" class="btn-base btn-green" data-toggle="modal" data-target="#new">
           Il manque...
