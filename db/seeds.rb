@@ -26,6 +26,8 @@ chris = User.create!(
     email: "chris@gmail.com",
     password: "123456"
 )
+chris.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHJNRSJ2X-8033519bd289-48"
+chris.save
 
 max = User.create!(
   first_name: "Maxime",
@@ -33,6 +35,8 @@ max = User.create!(
   email: "max@gmail.com",
   password: "123456"
 )
+max.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHJNDRP50-4cbef4975b23-48"
+max.save
 
 aym = User.create!(
   first_name: "Aymeric",
@@ -40,7 +44,8 @@ aym = User.create!(
   email: "aym@gmail.com",
   password: "123456"
 )
-
+aym.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHVHHPMT6-070fc749feb5-48"
+aym.save
 
 anto = User.create!(
   first_name: "Antoine",
@@ -48,6 +53,8 @@ anto = User.create!(
   email: "anto@gmail.com",
   password: "123456"
 )
+anto.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHW3LLS4V-bbfea18ca08e-48"
+anto.save
 
 users = [chris, aym, anto, max]
 
@@ -66,6 +73,8 @@ barbecue = Event.create!(
   zipcode: "59300",
   user_id: max[:id]
 )
+barbecue.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559728867/evt02xw2kvy7hmuzwmkq.jpg"
+barbecue.save
 
 anniversaire = Event.create!(
   description: "Je compte sur vous pour être présent",
@@ -78,6 +87,8 @@ anniversaire = Event.create!(
   zipcode: "59000",
   user_id: anto[:id]
 )
+anniversaire.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729073/y7i99pftlhehn6cwjrbu.jpg"
+anniversaire.save
 
 piscine = Event.create!(
   description: "Après-midi piscine à la cambrousse",
@@ -90,6 +101,8 @@ piscine = Event.create!(
   zipcode: "59130",
   user_id: aym[:id]
 )
+piscine.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729372/ggyt6qrjmueobqayovvx.jpg"
+piscine.save
 
 puts "Users & events OK !"
 puts "...................."
