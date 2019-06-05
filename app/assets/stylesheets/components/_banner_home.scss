@@ -5,6 +5,11 @@
   background-image: url("https://res.cloudinary.com/dwptvy074/image/upload/v1559723609/photo-1470753937643-efeb931202a9_fwwud2.jpg");
   h1 {
     color: white;
+    font-family: 'Lobster', cursive;
+    font-size: 4.5rem;
+  }
+  h2 {
+    color: white; 
   }
 }
 
@@ -18,8 +23,9 @@
 
 .btn_banner {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 0;
   right: 0;
   margin: auto;
+  width: 95%;
 }
