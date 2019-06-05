@@ -18,10 +18,21 @@
     <p><strong>Infos utiles:</strong> <%= @event.description %></p>
     <%=  %>
   </div>
+</div>
 
-  <ul>
-    <% @supplies.each do |supply| %>
-      <li><%= supply.title %></li>
+<div class="separator">
+  <h4>Qui ramène quoi?</h4>
+</div>
+
+<div class="container">
+
+  <button class="category" type="button" data-toggle="collapse" data-target="#nourriture" aria-expanded="false" aria-controls="nourriture">
+    <h4>Nourriture ( ? / <%= @feed.size %> )</h4>
+  </button>
+  <div class="category-list collapse" id="nourriture">
+    <% @feed.each do |supply| %>
+      <%= supply.title %>
     <% end %>
-  </ul>
+  </div>
+
 </div>
