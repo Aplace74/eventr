@@ -1,0 +1,12 @@
+.new {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url("https://res.cloudinary.com/dwptvy074/image/upload/v1559723609/photo-1470753937643-efeb931202a9_fwwud2.jpg");
+    background-size: cover;
+    background-position: center bottom;
+    color: white;
+    min-height: 100vh;
+        h1 {margin-bottom: 50px;}
+}
