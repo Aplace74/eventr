@@ -10,6 +10,10 @@
 
   <div>
     <h2>J'organise</h2>
+    <% current_user.events.each do |event| %>
+      <%= render "shared/card", event: event %>
+    <% end %>
+
   </div>  
 
   <div>
