@@ -32,7 +32,7 @@ class EventsController < ApplicationController
         user_id: @event.user.id,
         organizer: true
       )
-      redirect_to root_path
+      redirect_to events_path
     else
       render :new
     end
