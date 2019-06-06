@@ -5,13 +5,15 @@
     <h1>Participants</h1>
     <div class="d-flex row">
         <% @participants.each do |p|%>
-            <div class="col-4 my-4">
+            <div class="col-4 my-4 <%= "d-none" if !p.confirmed %>">
                 <img src="<%= cl_image_path p.user.avatar %>" class="rounded-circle mb-3"><br />
                 <%= p.user.first_name %>
             </div>
         <%end%>
     </div>
-    <a href="#" class="btn-base btn-green btn-large">Je ne participe plus</a>
+    <% if @participation.confirmed %>
+        <%= link_to 'Annuler ma participation', event_participation_path(event_id: @event.id, id: @participation.id), method: :put, class: "btn-base btn-green btn-large" %>
+    <%else%>
+        <%= link_to 'Participer à nouveau', event_participation_path(event_id: @event.id, id: @participation.id), method: :put, class: "btn-base btn-blue btn-large" %>
+    <%end%>
 </div>
-
-
