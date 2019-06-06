@@ -5,4 +5,10 @@ class Supply < ApplicationRecord
   has_many :participations, through: :contribution
 
   validates :quantity, :title, presence: true
+
+  def rest
+    rest = quantity
+    contributions.each { |c| rest -= c.part }
+    return rest
+  end
 end

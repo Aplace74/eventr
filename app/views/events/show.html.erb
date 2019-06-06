@@ -34,19 +34,17 @@
 <div class="list">
 
   <% @categories.each do |category| %>
-    <% supplies = @supplies.where(category_id: category.id) %>
+    <% supplies = category.category_supplies(@event) %>
     <div class="category">
       <a data-toggle="collapse" href="#<%= category.name %>" role="button" aria-expanded="false" aria-controls="<%= category.name %>">
         <div class="category-title">
-          <h4><%= category.name %> ( ? / <%= supplies.size %> )</h4>
+          <h4><%= category.name %> ( <%= category.status(@event) %> / <%= supplies.size %> )</h4>
           <i class="fas fa-plus"></i>
         </div>
       </a>
       <div class="category-list collapse" id="<%= category.name %>">
         <% supplies.each do |supply| %>
-          <% rest = supply.quantity %>
-          <% supply.contributions.each { |c| rest -= c.part } %>
-          <%= render "supply_card", supply: supply, rest: rest %>
+          <%= render "supply_card", supply: supply, rest: supply.rest %>
         <% end %>
         <button type="button" class="btn-base btn-green" data-toggle="modal" data-target="#new">
           Il manque...
@@ -66,7 +64,7 @@
           <span aria-hidden="true">X</span>
         </button>
           <h2>Il manque...</h2>
-          <form action="<%= event_contributions_path %>" method="post">
+          <form action="#" method="post">
             <div class="d-flex">
               <input type="number" placeholder="2">
               <input type="text" placeholder="paquets de chips">
