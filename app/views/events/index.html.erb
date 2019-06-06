@@ -1,31 +1,30 @@
-<div class="event_container">
-  <div class="event_banner">
+<div class="event-container">
+  <div class="event-banner">
     <h1>Bonjour <%= current_user.first_name %></h1>
-    <%= cl_image_tag current_user.avatar %>
+    <%= cl_image_tag current_user.avatar, class:"avatar-bordered" %>
   </div>
   
   <div>
     <%= link_to 'Créer un évènement', new_event_path, class:"btn-base btn-green" %>
   </div>
 
-  <div>
+  <div class="banner-cat">
     <h2>J'organise</h2>
-    <% Event.all.each do |event| %>
-      <% if event.user == current_user %>
-      <%= render "shared/card", event: event %>
+</div>  
+      <% @user_events.each do |event| %>
+        <%= render "shared/card", event: event %>
       <% end %>
-    <% end %>
+  
 
-  </div>  
-
-  <div>
+  <div class="banner-cat">
     <h2>Je participe</h2>
-    <% current_user.events.each do |event| %>
-      <%= render "shared/card", event: event %>
-    <% end %>
-  </div>  
+  </div>
+      <% @attending.each do |event| %>
+        <%= render "shared/card", event: event %>
+      <% end %>
+  
 
-  <div>
+  <div class="banner-cat">
     <h2>Archivé(s)</h2>
   </div>
   
