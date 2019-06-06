@@ -46,7 +46,7 @@
         <% supplies.each do |supply| %>
           <%= render "supply_card", supply: supply, rest: supply.rest %>
         <% end %>
-        <button type="button" class="btn-base btn-green" data-toggle="modal" data-target="#new">
+        <button type="button" class="btn-thin btn-base btn-green" data-category="<%= category.name %>" data-toggle="modal" data-target="#new">
           Il manque...
         </button>
       </div>
@@ -58,23 +58,19 @@
 <!-- Modal -->
 <div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="add modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">X</span>
         </button>
           <h2>Il manque...</h2>
-          <form action="#" method="post">
-            <div class="d-flex">
-              <input type="number" placeholder="2">
-              <input type="text" placeholder="paquets de chips">
-            </div>
-            <div class="d-flex">
-              <p>j'en prend</p>
-              <input type="checkbox">
-              <input type="number">
-            </div>
-            <input type="submit" value="Ajouter">
+          <form action="<%= event_supplies_path(@event) %>" method="post">
+            <%= hidden_field_tag :event_id, @event.id %>
+            <label for="title">Quoi ?</label>
+            <input type="text" name="title" placeholder="paquets de chips">
+            <label for="quantity">Combien ?</label>
+            <input type="number" name="quantity" placeholder="2">
+            <input type="submit" value="Ajouter" class="btn-thin btn-base btn-green">
           </form>
       </div>
     </div>
