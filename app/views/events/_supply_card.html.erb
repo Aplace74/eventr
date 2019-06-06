@@ -1,0 +1,20 @@
+<% contribute = @contributions.where("supply_id = #{supply.id}").first %>
+<div class="supply-card">
+  <strong><%= supply.quantity %> <%= supply.title %></strong>
+  <p><%= rest %> restants</p>
+  <% if contribute != nil %>
+    <p text-danger>Vous en prenez <%= contribute.part %></p>
+  <% end %>
+  <% if rest <= 0 %>
+    <p class="text-success">completed</p>
+  <% else %>
+    <form action="<%= event_contributions_path %>" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :participation_id, current_user.id %>
+      <%= hidden_field_tag :supply_id, supply.id %>
+      <p>j'en prend</p>
+      <input type="number" name="part">
+      <input type="submit">
+    </form>
+  <% end %>
+</div>

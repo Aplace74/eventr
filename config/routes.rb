@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :events, except: [:show] do
+  resources :events do
     resources :contributions, only: [:index, :create, :update, :destroy]
     resources :participations, only: [:index, :update, :destroy]
     resources :supplies, only: [:index, :create, :update, :destroy]
