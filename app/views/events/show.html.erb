@@ -1,80 +1,72 @@
 <%= render "shared/navbar", user: current_user %>
-
-<%= @event.picture %>
-
-<div class="banner" style="background-image: url('<%= cl_image_path @event.picture, crop: :fill %>')">
-  <div>
-    <h2><%= @event.title %></h2>
-    <p>
-      <strong>Date:</strong>
-      <%= @event.start_date %> au <%= @event.end_date %>
-    </p>
-    <p><%= @event.address %></p>
-  </div>
-  <div class="map">
-    <span class="fa-stack fa-2x">
-    <i class="fas fa-circle fa-stack-2x"></i>
-    <i class="fas fa-map-marked-alt fa-stack-1x fa-inverse"></i>
-    </span>
-  </div>
-</div>
+<%= render "shared/event_header", event: @event %>
 
 <div class="container">
-  <div class="description">
-    <p><strong>Infos utiles:</strong> <%= @event.description %></p>
-    <div class="text-center ml-1">
-      <%= cl_image_tag @event.user.avatar, height: 30, width: 30, crop: :fill, class: "avatar" %>
-      <p><%= @event.user.first_name %></p>
+    <div class="description">
+      <p><strong>Infos utiles:</strong> <%= @event.description %></p>
+      <div class="text-center ml-1">
+        <%= cl_image_tag @event.user.avatar, height: 30, width: 30, crop: :fill, class: "avatar" %>
+        <p><%= @event.user.first_name %></p>
+      </div>
     </div>
+
+
+  <div class="separator">
+    <h4>Qui ramène quoi?</h4>
   </div>
-</div>
 
-<div class="separator">
-  <h4>Qui ramène quoi?</h4>
-</div>
+  <div class="list">
 
-<div class="list">
-
-  <% @categories.each do |category| %>
-    <% supplies = category.category_supplies(@event) %>
-    <div class="category">
-      <a data-toggle="collapse" href="#<%= category.name %>" role="button" aria-expanded="false" aria-controls="<%= category.name %>">
-        <div class="category-title">
-          <h4><%= category.name %> ( <%= category.status(@event) %> / <%= supplies.size %> )</h4>
-          <i class="fas fa-plus"></i>
+    <% @categories.each do |category| %>
+      <% supplies = category.category_supplies(@event) %>
+      <div class="category">
+        <a data-toggle="collapse" href="#<%= category.name %>" role="button" aria-expanded="false" aria-controls="<%= category.name %>">
+          <div class="category-title">
+            <h4><%= category.name %> ( <%= category.status(@event) %> / <%= supplies.size %> )</h4>
+            <i class="fas fa-plus"></i>
+          </div>
+        </a>
+        <div class="category-list collapse" id="<%= category.name %>">
+          <% supplies.each do |supply| %>
+            <%= render "supply_card", supply: supply, rest: supply.rest %>
+          <% end %>
+          <button type="button" class="btn-thin btn-base btn-green" data-category="<%= category.name %>" data-toggle="modal" data-target="#new">
+            Il manque...
+          </button>
         </div>
-      </a>
-      <div class="category-list collapse" id="<%= category.name %>">
+       </a>
+      
+    <div class="category-list collapse" id="<%= category.name %>">
         <% supplies.each do |supply| %>
-          <%= render "supply_card", supply: supply, rest: supply.rest %>
+          <%= render "contributions/supply_card", supply: supply, rest: supply.rest, participation: @participation %>
         <% end %>
         <button type="button" class="btn-thin btn-base btn-green" data-category="<%= category.name %>" data-toggle="modal" data-target="#new">
           Il manque...
         </button>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-</div>
+  </div>
 
-<!-- Modal -->
-<div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="add modal-content">
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">X</span>
-        </button>
-          <h2>Il manque...</h2>
-          <form action="<%= event_supplies_path(@event) %>" method="post">
-            <%= hidden_field_tag :event_id, @event.id %>
-            <label for="title">Quoi ?</label>
-            <input type="text" name="title" placeholder="paquets de chips">
-            <label for="quantity">Combien ?</label>
-            <input type="number" name="quantity" placeholder="2">
-            <input type="submit" value="Ajouter" class="btn-thin btn-base btn-green">
-          </form>
+  <!-- Modal -->
+  <div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="add modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">X</span>
+          </button>
+            <h2>Il manque...</h2>
+            <form action="<%= event_supplies_path(@event) %>" method="post">
+              <%= hidden_field_tag :event_id, @event.id %>
+              <label for="title">Quoi ?</label>
+              <input type="text" name="title" placeholder="paquets de chips"><br />
+              <label for="quantity">Combien ?</label>
+              <input type="number" name="quantity" placeholder="2"><br />
+              <input type="submit" value="Ajouter" class="btn-thin btn-base btn-green">
+            </form>
+        </div>
       </div>
-    </div>
-  </div>  
+    </div>  
+  </div>
 </div>
