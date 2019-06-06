@@ -46,7 +46,7 @@
       </a>
       <div class="category-list collapse" id="<%= category.name %>">
         <% supplies.each do |supply| %>
-          <%= render "supply_card", supply: supply, rest: supply.rest %>
+          <%= render "contributions/supply_card", supply: supply, rest: supply.rest, participation: @participation %>
         <% end %>
         <button type="button" class="btn-thin btn-base btn-green" data-category="<%= category.name %>" data-toggle="modal" data-target="#new">
           Il manque...

@@ -1,6 +1,6 @@
-<% contribute = @participation.contributions.where("supply_id = #{supply.id}") %>
+<% contribute = participation.contributions.where("supply_id = #{supply.id}") %>
 <% contribute_part = 0 %>
-<div class="supply-card">
+<div class="supply-card" data-supply-id="<%= supply.id %>">
   <strong><%= supply.quantity %> <%= supply.title %></strong>
   <p><%= rest %> restants</p>
   <% if contribute.first != nil %>
@@ -10,11 +10,10 @@
   <% if rest <= 0 %>
     <p class="text-success">completed</p>
   <% else %>
-
-    <form action="<%= event_contributions_path(@event) %>" method="POST">
+    <form action="<%= event_contributions_path(@event) %>" method="POST" data-remote="true">
       <label for="part">J'en prend</label>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <%= hidden_field_tag :participation_id, @participation.id %>
+      <%= hidden_field_tag :participation_id, participation.id %>
       <%= hidden_field_tag :supply_id, supply.id %>
       <select name="part">
         <% (1..supply.rest).to_a.each do |nb| %>
@@ -23,8 +22,5 @@
       </select>
       <input type="submit" value="Go!" class="btn-thin btn-base btn-blue">
     </form>
-
-  
-    
   <% end %>
 </div>
