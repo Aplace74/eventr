@@ -1,4 +1,6 @@
 class ContributionsController < ApplicationController
+  skip_after_action :verify_policy_scoped, only: :index
+
   def create
     @supply = Supply.find(params[:supply_id])
     @participation = Participation.find(params[:participation_id])
@@ -12,6 +14,11 @@ class ContributionsController < ApplicationController
     end
   end
 
+  def index
+    @event = Event.find(params[:event_id])
+    @contributions = @event.participations.where(user: current_user)[0].contributions
+  end
+  
   private
 
   def contribution_params
@@ -21,4 +28,5 @@ class ContributionsController < ApplicationController
       supply_id: params[:supply_id].to_i
     }
   end
+
 end
