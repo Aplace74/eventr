@@ -8,5 +8,6 @@ class ContributionsController < ApplicationController
     @contribution = Contribution.new(contribution_params)
     authorize @contribution
     @contribution.save
+    redirect_to event_supplies_path
   end
 end

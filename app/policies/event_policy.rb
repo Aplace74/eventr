@@ -5,6 +5,9 @@ class EventPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    true
+  end
 
   # def index?
   #   true
@@ -17,5 +20,4 @@ class EventPolicy < ApplicationPolicy
   def create?
     new?
   end
-
 end
