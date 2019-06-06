@@ -9,9 +9,9 @@ class EventsController < ApplicationController
   end
 
   def index
-      @events = policy_scope(Event)
-      @user_events = @events.where(user: current_user)
-      @attending = Participation.where(user: current_user).map { |p| p.event }
+    @events = policy_scope(Event)
+    @user_events = @events.where(user: current_user)
+    @attending = Participation.where(user: current_user).map { |p| p.event }
   end
 
   def new
