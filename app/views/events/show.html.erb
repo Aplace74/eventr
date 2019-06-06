@@ -2,21 +2,19 @@
 <%= render "shared/event_header", event: @event %>
 
 <div class="container">
-    <div class="description">
-      <p><strong>Infos utiles:</strong> <%= @event.description %></p>
-      <div class="text-center ml-1">
-        <%= cl_image_tag @event.user.avatar, height: 30, width: 30, crop: :fill, class: "avatar" %>
-        <p><%= @event.user.first_name %></p>
-      </div>
+  <div class="description">
+    <p><strong>Infos :</strong> <%= @event.description %></p>
+    <div class="text-center ml-1">
+      <%= cl_image_tag @event.user.avatar, height: 30, width: 30, crop: :fill, class: "avatar" %>
+      <p><%= @event.user.first_name %></p>
     </div>
-
+  </div>
 
   <div class="separator">
     <h4>Qui ramène quoi?</h4>
   </div>
 
   <div class="list">
-
     <% @categories.each do |category| %>
       <% supplies = category.category_supplies(@event) %>
       <div class="category">
@@ -28,25 +26,15 @@
         </a>
         <div class="category-list collapse" id="<%= category.name %>">
           <% supplies.each do |supply| %>
-            <%= render "supply_card", supply: supply, rest: supply.rest %>
+            <%= render "contributions/supply_card", supply: supply, rest: supply.rest, participation: @participation %>
           <% end %>
           <button type="button" class="btn-thin btn-base btn-green" data-category="<%= category.name %>" data-toggle="modal" data-target="#new">
             Il manque...
           </button>
         </div>
-       </a>
-      
-    <div class="category-list collapse" id="<%= category.name %>">
-        <% supplies.each do |supply| %>
-          <%= render "contributions/supply_card", supply: supply, rest: supply.rest, participation: @participation %>
-        <% end %>
-        <button type="button" class="btn-thin btn-base btn-green" data-category="<%= category.name %>" data-toggle="modal" data-target="#new">
-          Il manque...
-        </button>
-      </div>
-    <% end %>
-
-  </div>
+    </div>
+  <% end %>
+</div>
 
   <!-- Modal -->
   <div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

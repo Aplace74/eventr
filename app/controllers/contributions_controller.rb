@@ -14,6 +14,11 @@ class ContributionsController < ApplicationController
     end
   end
 
+  def index
+    @event = Event.find(params[:event_id])
+    @contributions = @event.participations.where(user: current_user)[0].contributions
+  end
+  
   private
 
   def contribution_params
@@ -24,8 +29,4 @@ class ContributionsController < ApplicationController
     }
   end
 
-  def index
-    @event = Event.find(params[:event_id])
-    @contributions = @event.participations.where(user: current_user)[0].contributions
-  end
 end
