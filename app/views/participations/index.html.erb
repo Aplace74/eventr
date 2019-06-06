@@ -1,0 +1,17 @@
+<%= render "shared/navbar", user: current_user %>
+<%= render "shared/event_header", event: @event %>
+<div class="text-center container">
+    <a href="#" class="btn-base btn-green">Obtenir le lien à partager</a>
+    <h1>Participants</h1>
+    <div class="d-flex row">
+        <% @participants.each do |p|%>
+            <div class="col-4 my-4">
+                <img src="<%= cl_image_path p.user.avatar %>" class="rounded-circle mb-3"><br />
+                <%= p.user.first_name %>
+            </div>
+        <%end%>
+    </div>
+    <a href="#" class="btn-base btn-green btn-large">Je ne participe plus</a>
+</div>
+
+
