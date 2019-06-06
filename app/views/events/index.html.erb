@@ -8,8 +8,8 @@
     <%= link_to 'Créer un évènement', new_event_path, class:"btn-base btn-green" %>
   </div>
 
-  <div class="banner-cat">
-    <h2>J'organise</h2>
+  <div class="separator">
+    <h4>J'organise</h4>
 </div>  
       <% @user_events.each do |event| %>
         <%= link_to event_path(event) do %>
@@ -18,8 +18,8 @@
       <% end %>
   
 
-  <div class="banner-cat">
-    <h2>Je participe</h2>
+  <div class="separator">
+    <h4>Je participe</h4>
   </div>
       <% @attending.each do |event| %>
         <%= link_to event_path(event) do %>
@@ -28,8 +28,8 @@
       <% end %>
   
 
-  <div class="banner-cat">
-    <h2>Archivé(s)</h2>
+  <div class="separator">
+    <h4>Archivé(s)</h4>
   </div>
   
 </div>
