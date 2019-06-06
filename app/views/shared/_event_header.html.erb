@@ -1,0 +1,18 @@
+<div id="event-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('<%= cl_image_path event.picture, crop: :fill %>')">
+  <div class="container">
+    <div>
+      <h2><%= event.title %></h2>
+      <p>
+        <strong>Date:</strong>
+        <%= event.start_date %> au <%= event.end_date %>
+      </p>
+      <p><%= event.address %></p>
+    </div>
+    <div class="map">
+      <span class="fa-stack fa-2x">
+      <i class="fas fa-circle fa-stack-2x"></i>
+      <i class="fas fa-map-marked-alt fa-stack-1x fa-inverse"></i>
+      </span>
+    </div>
+  </div>
+</div>

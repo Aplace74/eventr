@@ -1,11 +1,28 @@
-<div class="navbar-lewagon">
-  <i class="fas fa-home"></i>
-  <a href="#">Invités</a>
-  <a href="#" class="active">Détails</a>
-  <a href="#">Ma liste</a>
-  <% if user_signed_in? %>
-    <%= cl_image_tag user.avatar, class: "avatar" %>
-  <% else %>
-    <img src="<%= image_path("person-dummy.jpg") %>" class="avatar">
-  <% end %>
-</div>
+<nav class="navbar-expand-lg">
+  <ul class="navbar-events navbar-nav">
+    <div>
+      <%= link_to events_path do %>
+        <i class="fas fa-home"></i>
+      <% end %>
+    </div>
+    <li class="nav-item active">
+      <%= link_to 'Invités', event_participations_path(@event) %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'Détails', event_path(@event) %>
+    </li>
+    <li>
+      <%= link_to 'Ma liste', event_contributions_path(@event) %>
+    </li>
+    <li class="nav-item dropdown dropleft">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= cl_image_tag user.avatar, class: "avatar" %> 
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%= link_to "Modifier mon profile", edit_user_registration_path, class: "dropdown-item" %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      </div>
+    </li>
+  </ul>
+</nav>
