@@ -8,21 +8,23 @@
     <%= link_to 'Créer un évènement', new_event_path, class:"btn-base btn-green" %>
   </div>
 
-  <div>
+  <div class="banner-cat">
     <h2>J'organise</h2>
+</div>  
       <% @user_events.each do |event| %>
         <%= render "shared/card", event: event %>
       <% end %>
-  </div>  
+  
 
-  <div>
+  <div class="banner-cat">
     <h2>Je participe</h2>
+  </div>
       <% @attending.each do |event| %>
         <%= render "shared/card", event: event %>
       <% end %>
-  </div>
+  
 
-  <div>
+  <div class="banner-cat">
     <h2>Archivé(s)</h2>
   </div>
   
