@@ -3,13 +3,16 @@
   height: 100vh;
   position: relative;
   background-image: url("https://res.cloudinary.com/dwptvy074/image/upload/v1559723609/photo-1470753937643-efeb931202a9_fwwud2.jpg");
+  background-size: cover;
   h1 {
     color: white;
     font-family: 'Lobster', cursive;
     font-size: 4.5rem;
+    letter-spacing: 0.1em;
   }
   h2 {
     color: white; 
+    letter-spacing: 0.1em;
   }
 }
 

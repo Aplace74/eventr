@@ -167,25 +167,25 @@ puts "Adding Participations..."
 part_max = Participation.create!(
   confirmed: true,
   event_id: piscine[:id],
-  user_id: aym[:id]
+  user_id: max[:id]
 )
 
 part_aym = Participation.create!(
   confirmed: true,
   event_id: anniversaire[:id],
-  user_id: anto[:id]
+  user_id: aym[:id]
 )
 
 part_anto = Participation.create!(
   confirmed: true,
   event_id: barbecue[:id],
-  user_id: max[:id]
+  user_id: anto[:id]
 )
 
 part_chris = Participation.create!(
   confirmed: true,
   event_id: barbecue[:id],
-  user_id: max[:id]
+  user_id: chris[:id]
 )
 
 puts "Participations OK"

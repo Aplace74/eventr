@@ -1,0 +1,56 @@
+<div class="new">
+
+    <h1>Créer un événement</h1>
+
+    <div>
+      <%= simple_form_for [@event] do |f| %>
+        <div class="form-inputs">
+            <%= f.input :title,
+                        placeholder: "Titre de l'événement",
+                        label: false,
+                        required: true,
+                        autofocus: true %>
+            <%= f.input :address,
+                        placeholder: "Adresse",
+                        label: false,
+                        required: true,
+                        autofocus: true %>
+            <%= f.input :zipcode,
+                        placeholder: "Code postal",
+                        label: false,
+                        required: true,
+                        autofocus: true %>
+            <%= f.input :city,
+                        placeholder: "Ville",
+                        label: false,
+                        required: true,
+                        autofocus: true %>
+            <%= f.input :start_date,
+                        as: :string,
+                        placeholder: "Date début",
+                        label: false,
+                        required: true,
+                        autofocus: true,
+                        input_html: { class: "datepicker" } %>
+            <%= f.input :end_date,
+                        as: :string,
+                        placeholder: "Date fin",
+                        label: false,
+                        required: true,
+                        autofocus: true,
+                        input_html: { class: "datepicker" } %>
+            <%= f.input :description,
+                        placeholder: "Description",
+                        label: false,
+                        required: true,
+                        autofocus: true %> 
+            <%= f.input :picture, required: false %>
+            <%= f.input :picture_cache, as: :hidden %> 
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Créer l'événement", class:"btn-base btn-green btn-large" %>
+        </div>
+      <% end %>
+    </div>
+</div>  
