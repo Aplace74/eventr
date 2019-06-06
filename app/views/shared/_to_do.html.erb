@@ -8,14 +8,14 @@
 					<li class="done">
 						<input type="checkbox" id="<%= id_rand %>" checked disabled/>
 						<label class="toggle" for="<%= id_rand %>"></label>
-            <%= "#{contribution.supply.quantity} x " if contribution.supply.quantity > 1 %>
+            <%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
 						<%= contribution.supply.title %>
 					</li>
 				<% else %>
 					<li>
 						<input type="checkbox" id="<%= id_rand %>"/>
 						<label class="toggle" for="<%= id_rand %>"></label>
-            <%= "#{contribution.supply.quantity} x " if contribution.supply.quantity > 1 %>
+            <%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
 						<%= contribution.supply.title %>
 					</li>
 				<% end %>
