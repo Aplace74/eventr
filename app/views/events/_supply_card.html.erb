@@ -10,6 +10,7 @@
   <% if rest <= 0 %>
     <p class="text-success">completed</p>
   <% else %>
+
     <form action="<%= event_contributions_path(@event) %>" method="POST">
       <label for="part">J'en prend</label>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -22,5 +23,8 @@
       </select>
       <input type="submit" value="Go!" class="btn-thin btn-base btn-blue">
     </form>
+
+  
+    
   <% end %>
 </div>

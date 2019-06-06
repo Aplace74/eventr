@@ -1,8 +1,10 @@
 <div class="navbar-lewagon">
-  <%= link_to event_path, class:"fas fa-home" %>
-  <%= link_to 'Invités', event_participations_path %>
-  <%= link_to 'Détails', event_path %>
-  <%= link_to 'Ma liste', event_contributions_path %>
+  <%= link_to events_path do %>
+    <i class="fas fa-home"></i>
+  <% end %>
+  <%= link_to 'Invités', event_participations_path(@event) %>
+  <%= link_to 'Détails', event_path(@event) %>
+  <%= link_to 'Ma liste', event_contributions_path(@event) %>
   <% if user_signed_in? %>
     <%= cl_image_tag user.avatar, class: "avatar" %>
   <% else %>
