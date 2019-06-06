@@ -1,0 +1,25 @@
+<div class="container">
+	<section class="todo">
+		<h2>Ma liste</h2>
+		<ul class="todo-list">
+			<% contributions.each do |contribution| %>
+      <% id_rand = rand(10000) * rand(1000000) %>
+				<% if contribution.state %>
+					<li class="done">
+						<input type="checkbox" id="<%= id_rand %>" checked disabled/>
+						<label class="toggle" for="<%= id_rand %>"></label>
+            <%= "#{contribution.supply.quantity} x " if contribution.supply.quantity > 1 %>
+						<%= contribution.supply.title %>
+					</li>
+				<% else %>
+					<li>
+						<input type="checkbox" id="<%= id_rand %>"/>
+						<label class="toggle" for="<%= id_rand %>"></label>
+            <%= "#{contribution.supply.quantity} x " if contribution.supply.quantity > 1 %>
+						<%= contribution.supply.title %>
+					</li>
+				<% end %>
+			<% end %>
+		</ul>
+	</section>
+</div>
