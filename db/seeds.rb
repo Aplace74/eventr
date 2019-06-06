@@ -33,7 +33,7 @@ max = User.create!(
   first_name: "Maxime",
   last_name: "Derouet",
   email: "max@gmail.com",
-  password: "123456"
+  password: "motdepasse"
 )
 max.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHJNDRP50-4cbef4975b23-48"
 max.save
@@ -76,6 +76,13 @@ barbecue = Event.create!(
 barbecue.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559728867/evt02xw2kvy7hmuzwmkq.jpg"
 barbecue.save
 
+Participation.create!(
+  confirmed: true,
+  event_id: barbecue[:id],
+  user_id: max[:id],
+  organizer: true
+)
+
 anniversaire = Event.create!(
   description: "Je compte sur vous pour être présent",
   title: "25 ans Antoine",
@@ -90,6 +97,13 @@ anniversaire = Event.create!(
 anniversaire.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729073/y7i99pftlhehn6cwjrbu.jpg"
 anniversaire.save
 
+Participation.create!(
+  confirmed: true,
+  event_id: anniversaire[:id],
+  user_id: anto[:id],
+  organizer: true
+)
+
 piscine = Event.create!(
   description: "Après-midi piscine à la cambrousse",
   title: "Pool Party",
@@ -103,6 +117,34 @@ piscine = Event.create!(
 )
 piscine.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729372/ggyt6qrjmueobqayovvx.jpg"
 piscine.save
+
+Participation.create!(
+  confirmed: true,
+  event_id: piscine[:id],
+  user_id: aym[:id],
+  organizer: true
+)
+
+juillet_14 = Event.create!(
+  description: "Feu d'artifice à la grange",
+  title: "14 juillet",
+  start_date: Date.new(2019, 7, 14),
+  end_date: Date.new(2019, 7, 15),
+  picture: "",
+  address: "100 rue des Petis",
+  city: "Lomme", 
+  zipcode: "59200",
+  user_id: chris[:id]
+)
+piscine.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729372/ggyt6qrjmueobqayovvx.jpg"
+piscine.save
+
+Participation.create!(
+  confirmed: true,
+  event_id: juillet_14[:id],
+  user_id: chris[:id],
+  organizer: true
+) 
 
 puts "Users & events OK !"
 puts "...................."
