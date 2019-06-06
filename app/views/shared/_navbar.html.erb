@@ -1,11 +1,13 @@
-<div class="navbar-lewagon">
-  <i class="fas fa-home"></i>
-  <a href="#">Invités</a>
-  <a href="#" class="active">Détails</a>
-  <a href="#">Ma liste</a>
-  <% if user_signed_in? %>
-    <%= cl_image_tag user.avatar, class: "avatar" %>
-  <% else %>
-    <img src="<%= image_path("person-dummy.jpg") %>" class="avatar">
-  <% end %>
+<div class="green-bg">
+  <div class="navbar-lewagon container">
+    <i class="fas fa-home"></i>
+    <a href="#">Invités</a>
+    <a href="#" class="active">Détails</a>
+    <a href="#">Ma liste</a>
+    <% if user_signed_in? %>
+      <%= cl_image_tag user.avatar, class: "avatar" %>
+    <% else %>
+      <img src="<%= image_path("person-dummy.jpg") %>" class="avatar">
+    <% end %>
+  </div>
 </div>

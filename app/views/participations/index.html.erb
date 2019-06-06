@@ -11,7 +11,10 @@
             </div>
         <%end%>
     </div>
-    <a href="#" class="btn-base btn-green btn-large">Je ne participe plus</a>
+    <% if current_user.participations.where(event_id: @event.id).first.confirmed %>
+    <a href="#" class="btn-base btn-green btn-large">Annuler ma participation</a>
+    <%else%>
+    <%end%>
 </div>
 
 
