@@ -5,10 +5,23 @@
 }
 
 
-.event_container {
+.event-container {
   margin: 0 auto;
   text-align: center;
 }
+
+.event-banner {
+  color: white;
+  background-color: #273c3b;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 10vh;
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
 
 .category {
   margin: 15px 0;
