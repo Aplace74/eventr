@@ -33,7 +33,7 @@ max = User.create!(
   first_name: "Maxime",
   last_name: "Derouet",
   email: "max@gmail.com",
-  password: "motdepasse"
+  password: "password"
 )
 max.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHJNDRP50-4cbef4975b23-48"
 max.save
