@@ -12,7 +12,9 @@
     <h2>J'organise</h2>
 </div>  
       <% @user_events.each do |event| %>
-        <%= render "shared/card", event: event %>
+        <%= link_to event_path(event) do %>
+          <%= render "shared/card", event: event %>
+        <% end %>
       <% end %>
   
 
@@ -20,7 +22,9 @@
     <h2>Je participe</h2>
   </div>
       <% @attending.each do |event| %>
-        <%= render "shared/card", event: event %>
+        <%= link_to event_path(event) do %>
+          <%= render "shared/card", event: event %>
+        <% end %>
       <% end %>
   
 
