@@ -9,7 +9,15 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = policy_scope(Event)
+      @events = policy_scope(Event)
+      @user_events = @events.where(user: current_user)
+      @attending = Participation.all.where(user: current_user).map { |p| p.event }
+  end
+
+  def new
+      @event = Event.new
+      @event.user = current_user
+      authorize @event
   end
 
   def new
