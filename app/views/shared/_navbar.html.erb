@@ -1,13 +1,12 @@
-<div class="green-bg">
-  <div class="navbar-lewagon container">
+<div class="navbar-lewagon">
+  <%= link_to events_path do %>
     <i class="fas fa-home"></i>
-    <a href="#">Invités</a>
-    <a href="#" class="active">Détails</a>
-    <a href="#">Ma liste</a>
-    <% if user_signed_in? %>
-      <%= cl_image_tag user.avatar, class: "avatar" %>
-    <% else %>
-      <img src="<%= image_path("person-dummy.jpg") %>" class="avatar">
-    <% end %>
-  </div>
+  <% end %>
+  <%= link_to 'Invités', event_participations_path(@event) %>
+  <%= link_to 'Détails', event_path(@event) %>
+  <%= link_to 'Ma liste', event_contributions_path(@event) %>
+  <% if user_signed_in? %>
+    <%= cl_image_tag user.avatar, class: "avatar" %>
+  <% else %>
+    <img src="<%= image_path("person-dummy.jpg") %>" class="avatar">
 </div>
