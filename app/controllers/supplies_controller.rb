@@ -1,2 +1,19 @@
 class SuppliesController < ApplicationController
+  def create
+    @event = Event.find(params[:event_id])
+    @supply = Supply.create(supply_params)
+    authorize @supply
+    redirect_to event_path(@event)
+  end
+
+  private
+
+  def supply_params
+    {
+      title: params[:title],
+      quantity: params[:quantity],
+      category_id: params[:category_id],
+      event_id: params[:event_id],
+    }
+  end
 end

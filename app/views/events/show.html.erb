@@ -48,7 +48,7 @@
         <% supplies.each do |supply| %>
           <%= render "contributions/supply_card", supply: supply, rest: supply.rest, participation: @participation %>
         <% end %>
-        <button type="button" class="btn-thin btn-base btn-green" data-category="<%= category.name %>" data-toggle="modal" data-target="#new">
+        <button type="button" class="btn-modal btn-thin btn-base btn-green" data-category="<%= category.id %>" data-toggle="modal" data-target="#new">
           Il manque...
         </button>
       </div>
@@ -66,12 +66,15 @@
           <span aria-hidden="true">X</span>
         </button>
           <h2>Il manque...</h2>
-          <form action="<%= event_supplies_path(@event) %>" method="post">
+          <form id="modal-form" action="<%= event_supplies_path(@event) %>" method="post" data-category="">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
             <%= hidden_field_tag :event_id, @event.id %>
+            <input type="hidden" name="category_id" id="category_id" value="0">
             <label for="title">Quoi ?</label>
             <input type="text" name="title" placeholder="paquets de chips">
             <label for="quantity">Combien ?</label>
             <input type="number" name="quantity" placeholder="2">
+
             <input type="submit" value="Ajouter" class="btn-thin btn-base btn-green">
           </form>
       </div>
