@@ -1,6 +1,5 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: $green-bg-btn;
   display: flex;
   color: white;
   padding: 4px;
@@ -14,6 +13,8 @@
       text-decoration: underline;
     }
 }
+
+.green-bg {background: $green-bg-btn;}
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
