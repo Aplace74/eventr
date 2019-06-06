@@ -10,8 +10,10 @@
 
   <div>
     <h2>J'organise</h2>
-    <% current_user.events.each do |event| %>
+    <% Event.all.each do |event| %>
+      <% if event.user == current_user %>
       <%= render "shared/card", event: event %>
+      <% end %>
     <% end %>
 
   </div>  
@@ -19,7 +21,7 @@
   <div>
     <h2>Je participe</h2>
     <% current_user.events.each do |event| %>
-      <%= event.title %>  
+      <%= render "shared/card", event: event %>
     <% end %>
   </div>  
 
