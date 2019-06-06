@@ -1,4 +1,6 @@
 class ContributionsController < ApplicationController
+  skip_after_action :verify_policy_scoped, only: :index
+
   def create
     @event = Event.find(params[:event_id])
     contribution_params = {
@@ -10,5 +12,10 @@ class ContributionsController < ApplicationController
     authorize @contribution
     @contribution.save
     redirect_to event_path(@event)
+  end
+
+  def index
+    event = Event.find(params[:event_id])
+    @contributions = event.participations.where(user: current_user)[0].contributions
   end
 end
