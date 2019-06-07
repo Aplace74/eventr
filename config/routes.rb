@@ -9,10 +9,17 @@ Rails.application.routes.draw do
   end
 
   resources :events do
-    resources :contributions, only: [:index, :create, :update, :destroy]
+    resources :contributions, only: [:index, :create, :update, :destroy] do
+  
+    end
     resources :participations, only: [:index, :update, :destroy]
     resources :supplies, only: [:index, :create, :update, :destroy]
   end
+
+  resources :contributions, only: [] do
+    post 'change-state', to: 'contributions#change_state'
+  end
+  
 
   # static pages
   get "/composants" => "pages#composants"

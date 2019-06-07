@@ -3,19 +3,19 @@
 		<h2>Ma liste</h2>
 		<ul class="todo-list">
 			<% contributions.each do |contribution| %>
-      <% id_rand = rand(10000) * rand(1000000) %>
+				<% id = contribution.id %>
 				<% if contribution.state %>
-					<li class="done">
-						<input type="checkbox" id="<%= id_rand %>" checked disabled/>
-						<label class="toggle" for="<%= id_rand %>"></label>
+					<li>
+						<input type="checkbox" id="<%= id %>" checked/>
+						<label class="toggle" for="<%= id %>"></label>
             <%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
 						<%= contribution.supply.title %>
 					</li>
 				<% else %>
 					<li>
-						<input type="checkbox" id="<%= id_rand %>"/>
-						<label class="toggle" for="<%= id_rand %>"></label>
-            <%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
+						<input type="checkbox" id="<%= id %>"/>
+						<label class="toggle" for="<%= id %>"></label>
+						<%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
 						<%= contribution.supply.title %>
 					</li>
 				<% end %>
