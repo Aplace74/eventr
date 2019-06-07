@@ -9,9 +9,9 @@ class EventPolicy < ApplicationPolicy
     true
   end
 
-  # def index?
-  #   true
-  # end
+  def invitation?
+    true
+  end
 
   def new?
     true
