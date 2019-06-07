@@ -44,13 +44,9 @@
                         label: false,
                         required: true,
                         autofocus: true %> 
-            <div class="form-group file optional event_picture m-0">
-              <label for="event_picture" class="m-0">
-                <i class="fas fa-file-image fa-5x"></i>
-                <p class="p-0 m-0">Une photo d'illustration<br />(optionnel)</p>
-              </label>
-              <input class="form-control-file file optional" type="file" name="event[picture]" id="event_picture">
-            </div>
+            <label class="file optional" for="event_picture"><i class="fas fa-file-image fa-5x"></i><br />Ajouter une photo</label>
+            <%= f.input :picture_cache, as: :hidden %>
+            <%= f.input :picture, label: false %>
         </div>
         <div class="form-actions">
           <%= f.button :submit, "Créer l'événement", class:"btn-base btn-blue btn-large" %>
