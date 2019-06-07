@@ -1,6 +1,6 @@
 <div class="card-event">
 	<div class="picture">
-		<%= cl_image_tag event.picture, crop: :fill %>
+		<%= event.picture.url.nil? ? image_tag("default-event.jpg") : cl_image_tag(event.picture, crop: :fill)  %>
 		<h4><%= event.title %></h4>
 		<div class="pelette">
 			<div class="date">
