@@ -50,7 +50,7 @@ aym.save
 anto = User.create!(
   first_name: "Antoine",
   last_name: "Place",
-  email: "anto@gmail.com",
+  email: "antoineplace2212@gmail.com",
   password: "123456"
 )
 anto.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHW3LLS4V-bbfea18ca08e-48"
