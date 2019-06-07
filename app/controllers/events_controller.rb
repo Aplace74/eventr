@@ -44,6 +44,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
     authorize @event
     @participation = Participation.new
+    @title = "Invite tes amis"
   end
 
   private
