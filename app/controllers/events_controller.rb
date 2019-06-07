@@ -28,7 +28,6 @@ class EventsController < ApplicationController
     @event.user = current_user
     authorize @event
     if @event.save
-      # Create participant organiser
       Participation.create!(
         confirmed: true,
         event_id: @event.id,
@@ -39,6 +38,12 @@ class EventsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def invitation
+    @event = Event.find(params[:event_id])
+    authorize @event
+    @participation = Participation.new
   end
 
   private
