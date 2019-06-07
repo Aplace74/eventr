@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+    get '/:token/invitation', to: 'events#invitation', as: :invitation
     resources :contributions, only: [:index, :create, :update, :destroy]
-    resources :participations, only: [:index, :update, :destroy]
+    resources :participations, only: [:index, :update, :destroy, :create]
     resources :supplies, only: [:index, :create, :update, :destroy]
   end
 
