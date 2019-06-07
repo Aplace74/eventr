@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>EventR</title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
-    <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
-    <%= favicon_link_tag asset_path('balloon.png') %>
-  </head>
-  <body>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
-  </body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>
+			<% if @title.nil? %>
+				<%= "EventR " %>
+			<% else %>
+				<%= "EventR - #{@title}" %>
+			<% end %>
+		</title>
+		<%= csrf_meta_tags %>
+		<%= action_cable_meta_tag %>
+		<%= stylesheet_link_tag 'application', media: 'all' %>
+		<link href="https://fonts.googleapis.com/css?family=Francois+One&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+		<%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+		<%= favicon_link_tag asset_path('balloon.png') %>
+	</head>
+	<body>
+		<%= render 'shared/flashes' %>
+		<%= yield %>
+		<%= javascript_include_tag 'application' %>
+		<%= javascript_pack_tag 'application' %>
+	</body>
 </html>
