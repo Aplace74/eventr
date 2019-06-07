@@ -1,12 +1,16 @@
 <div class="event-container">
   <div class="event-banner">
+  <div class="container align-items-center d-flex justify-content-between">
     <h1>Bonjour <%= current_user.first_name %></h1>
     <%= cl_image_tag current_user.avatar, class:"avatar-bordered" %>
+  </div>
   </div>
   
   <div>
     <%= link_to 'Créer un évènement', new_event_path, class:"btn-base btn-green" %>
   </div>
+
+  <div class="container">
 
   <div class="separator">
     <h4>J'organise</h4>
@@ -32,4 +36,5 @@
     <h4>Archivé(s)</h4>
   </div>
   
+</div>
 </div>
