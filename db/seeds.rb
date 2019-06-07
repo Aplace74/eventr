@@ -23,7 +23,7 @@ puts "Creating users..."
 chris = User.create!(
     first_name: "Christophe",
     last_name: "Lepretre",
-    email: "chris@gmail.com",
+    email: "chrislep62@gmail.com",
     password: "123456"
 )
 chris.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHJNRSJ2X-8033519bd289-48"
@@ -32,7 +32,7 @@ chris.save
 max = User.create!(
   first_name: "Maxime",
   last_name: "Derouet",
-  email: "max@gmail.com",
+  email: "mxderouet@gmail.com",
   password: "password"
 )
 max.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHJNDRP50-4cbef4975b23-48"
@@ -41,7 +41,7 @@ max.save
 aym = User.create!(
   first_name: "Aymeric",
   last_name: "Dhalluin",
-  email: "aym@gmail.com",
+  email: "aymeric.dhalluin@gmail.com",
   password: "123456"
 )
 aym.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHVHHPMT6-070fc749feb5-48"
@@ -173,8 +173,6 @@ puts "Adding supplies..."
 saucisses = Supply.create!(
   title: "Saucisses",
   quantity: 12,
-  created_at: Date.new(2019, 6, 5),
-  updated_at: Date.new(2019, 6, 5),
   category_id: food[:id],
   event_id: piscine[:id]
 )
@@ -182,8 +180,6 @@ saucisses = Supply.create!(
 baguettes = Supply.create!(
   title: "Baguettes",
   quantity: 5,
-  created_at: Date.new(2019, 6, 5),
-  updated_at: Date.new(2019, 6, 5),
   category_id: food[:id],
   event_id: anniversaire[:id]
 )
@@ -191,8 +187,6 @@ baguettes = Supply.create!(
 vin = Supply.create!(
   title: "Vin Rouge",
   quantity: 2,
-  created_at: Date.new(2019, 6, 5),
-  updated_at: Date.new(2019, 6, 5),
   category_id: drinks[:id],
   event_id: piscine[:id]
 )
@@ -200,8 +194,6 @@ vin = Supply.create!(
 music = Supply.create!(
   title: "Enceintes",
   quantity: 1,
-  created_at: Date.new(2019, 6, 5),
-  updated_at: Date.new(2019, 6, 5),
   category_id: other[:id],
   event_id: piscine[:id]
 )
