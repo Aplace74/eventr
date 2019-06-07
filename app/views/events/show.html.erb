@@ -27,7 +27,7 @@
         <% supplies.each do |supply| %>
           <%= render "contributions/supply_card", supply: supply, rest: supply.rest, participation: @participation %>
         <% end %>
-        <button type="button" class="btn-modal btn-thin btn-base btn-green" data-category="<%= category.id %>" data-toggle="modal" data-target="#new">
+        <button type="button" class="btn-modal btn-thin btn-base btn-blue" data-category="<%= category.id %>" data-toggle="modal" data-target="#new">
           Il manque...
         </button>
       </div>
@@ -53,7 +53,7 @@
             <label for="quantity">Combien ?</label>
             <input type="number" name="quantity" placeholder="2">
 
-            <input type="submit" value="Ajouter" class="btn-thin btn-base btn-green">
+            <input type="submit" value="Ajouter" class="btn-thin btn-base btn-blue">
           </form>
       </div>
     </div>  
