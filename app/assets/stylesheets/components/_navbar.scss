@@ -11,9 +11,14 @@
     text-decoration: none;
     cursor: pointer;
   }
-  a.active {
-    text-decoration: underline;
+  .active {
+    border-bottom: 2px solid white;
   }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
   .dropdown-menu {
     background: $green-bg-btn;
   }
