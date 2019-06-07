@@ -1,6 +1,6 @@
 <div class="card-event">
 	<div class="picture">
-		<img src="https://images.unsplash.com/photo-1521473717695-e8f5635b7f6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="belle image">
+		<%= cl_image_tag event.picture, crop: :fill %>
 		<h4><%= event.title %></h4>
 		<div class="pelette">
 			<div class="date">
