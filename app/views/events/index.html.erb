@@ -19,31 +19,33 @@
     <%= link_to 'Créer un évènement', new_event_path, class:"btn-base btn-blue" %>
   </div>
 
-  <div class="container">
+  
 
   <div class="separator">
     <h4>J'organise</h4>
-</div>  
-      <% @user_events.each do |event| %>
-        <%= link_to event_path(event) do %>
-          <%= render "shared/card", event: event %>
-        <% end %>
+  </div>
+  <div class="container">  
+    <% @user_events.each do |event| %>
+      <%= link_to event_path(event) do %>
+        <%= render "shared/card", event: event %>
       <% end %>
-  
+    <% end %>
+  </div>
 
   <div class="separator">
     <h4>Je participe</h4>
   </div>
-      <% @attending.each do |event| %>
-        <%= link_to event_path(event) do %>
-          <%= render "shared/card", event: event %>
-        <% end %>
+  <div class="container">
+    <% @attending.each do |event| %>
+      <%= link_to event_path(event) do %>
+        <%= render "shared/card", event: event %>
       <% end %>
-  
+    <% end %>
+  </div>
 
   <div class="separator">
     <h4>Archivé(s)</h4>
   </div>
-  
+<div class="container"></div>  
 </div>
 </div>
