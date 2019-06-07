@@ -1,7 +1,7 @@
 <%= render "shared/navbar", user: current_user %>
 <%= render "shared/event_header", event: @event %>
 <div class="text-center container">
-    <a href="#" class="btn-base btn-green">Obtenir le lien à partager</a>
+    <a href="#" class="btn-base btn-blue">Obtenir le lien à partager</a>
     <h1>Participants</h1>
     <div class="d-flex row">
         <% @participants.each do |p|%>
@@ -12,7 +12,7 @@
         <%end%>
     </div>
     <% if @participation.confirmed %>
-        <%= link_to 'Annuler ma participation', event_participation_path(event_id: @event.id, id: @participation.id), method: :put, class: "btn-base btn-green btn-large" %>
+        <%= link_to 'Annuler ma participation', event_participation_path(event_id: @event.id, id: @participation.id), method: :put, class: "btn-base btn-red btn-large" %>
     <%else%>
         <%= link_to 'Participer à nouveau', event_participation_path(event_id: @event.id, id: @participation.id), method: :put, class: "btn-base btn-blue btn-large" %>
     <%end%>
