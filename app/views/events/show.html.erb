@@ -8,33 +8,37 @@
       <p><%= @event.user.first_name %></p>
     </div>
   </div>
+</div>
 
   <div class="separator">
-    <h4>Qui ramène quoi?</h4>
+    <h4>Qui ramène quoi ?</h4>
   </div>
 
+
+<div class="container">
   <div class="list">
     <% @categories.each do |category| %>
       <% supplies = category.category_supplies(@event) %>
       <div class="category">
-        <a data-toggle="collapse" href="#<%= category.name %>" role="button" aria-expanded="false" aria-controls="<%= category.name %>">
-          <div class="category-title">
-            <h4><%= category.name %> ( <%= category.status(@event) %> / <%= supplies.size %> )</h4>
+        <a class="category-title" data-toggle="collapse" href="#<%= category.name %>" role="button" aria-expanded="false" aria-controls="<%= category.name %>">
+            <p><strong><%= category.name %></strong> ( <%= category.status(@event) %> / <%= supplies.size %> )</p>
             <i class="fas fa-plus"></i>
-          </div>
         </a>
-      <div class="category-list collapse" id="<%= category.name %>">
-        <% supplies.each do |supply| %>
-          <%= render "contributions/supply_card", supply: supply, rest: supply.rest, participation: @participation %>
-        <% end %>
-        <button type="button" class="btn-modal btn-thin btn-base btn-blue" data-category="<%= category.id %>" data-toggle="modal" data-target="#new">
-          Il manque...
-        </button>
+        <div class="category-list collapse" id="<%= category.name %>">
+          <% supplies.each do |supply| %>
+            <%= render "contributions/supply_card", supply: supply, rest: supply.rest, participation: @participation %>
+          <% end %>
+          <div class="text-center">
+            <button type="button" class="btn-modal btn-thin btn-base btn-blue" data-category="<%= category.id %>" data-toggle="modal" data-target="#new">
+            Ajouter un élèment
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
-  
+    <% end %>
+  </div>
+</div> 
+
 <!-- Modal -->
 <div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -44,17 +48,15 @@
           <span aria-hidden="true">X</span>
         </button>
           <h2>Il manque...</h2>
-          <form id="modal-form" action="<%= event_supplies_path(@event) %>" method="post" data-category="">
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            <%= hidden_field_tag :event_id, @event.id %>
-            <input type="hidden" name="category_id" id="category_id" value="0">
-            <label for="title">Quoi ?</label>
-            <input type="text" name="title" placeholder="paquets de chips">
-            <label for="quantity">Combien ?</label>
-            <input type="number" name="quantity" placeholder="2">
-
-            <input type="submit" value="Ajouter" class="btn-thin btn-base btn-blue">
-          </form>
+          
+            <form class="add-stuff" id="modal-form" action="<%= event_supplies_path(@event) %>" method="post" data-category="">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              <%= hidden_field_tag :event_id, @event.id %>
+              <input type="hidden" name="category_id" id="category_id" value="0">
+              <input class="add-number" type="text" name="title" placeholder="Quoi ?">
+              <input class="add-number" type="number" name="quantity" placeholder="Combien ?">
+              <input type="submit" value="Ajouter" class="btn-thin btn-base btn-blue">
+            </form>
       </div>
     </div>  
   </div>
