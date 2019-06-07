@@ -1,0 +1,15 @@
+<%= render "shared/event_header", event: @event %>
+<div class="description">
+  <p><strong>Infos :</strong> <%= @event.description %></p>
+  <div class="text-center ml-1">
+    <%= cl_image_tag @event.user.avatar, height: 30, width: 30, crop: :fill, class: "avatar" %>
+    <p><%= @event.user.first_name %></p>
+  </div>
+</div>
+
+<%= simple_form_for [@event, @participation] do |f| %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :event_id, @event.id %>
+  <%= f.button :submit, "Je participe !", class:"btn-base btn-blue btn-large" %>
+<% end %>

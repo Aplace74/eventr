@@ -1,26 +1,27 @@
 <% contribute = participation.contributions.where("supply_id = #{supply.id}") %>
 <% contribute_part = 0 %>
+
 <div class="supply-card" data-supply-id="<%= supply.id %>">
   <strong><%= supply.quantity %> <%= supply.title %></strong>
-  <p><%= rest %> restants</p>
-  <% if contribute.first != nil %>
-    <% contribute.each { |c| contribute_part += c.part } %>
-    <p class="text-danger">J'en prend déja : <%= contribute_part %></p>
-  <% end %>
+  <p style="font-size: 14px; color: grey; margin: 2px"><%= rest %> restant(s)</p>
   <% if rest <= 0 %>
-    <p class="text-success">completed</p>
+    <p class="text-success text-center" style="font-size: 14px; margin: 2px">complet</p>
   <% else %>
-    <form action="<%= event_contributions_path(@event) %>" method="POST" data-remote="true">
-      <label for="part">J'en prend</label>
+    <form action="<%= event_contributions_path(@event) %>" method="POST" data-remote="true" class="text-center d-flex justify-content-around" style="font-size: 16px; margin: 2px">
+      <label class="m-0" for="part">J'en prends</label>
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <%= hidden_field_tag :participation_id, participation.id %>
       <%= hidden_field_tag :supply_id, supply.id %>
-      <select name="part">
+      <select class="select-style" name="part">
         <% (1..supply.rest).to_a.each do |nb| %>
           <option value="<%= nb %>"><%= nb %></option>
         <% end %>
       </select>
-      <input type="submit" value="Go!" class="btn-thin btn-base btn-blue">
+      <input type="submit" value="Go!" class="btn-thin btn-base btn-blue" style="margin: 2px">
     </form>
+    <% if contribute.first != nil %>
+      <% contribute.each { |c| contribute_part += c.part } %>
+      <p class="text-danger text-center" style="font-size: 14px; margin: 2px">je prends déja : <%= contribute_part %></p>
+    <% end %>
   <% end %>
 </div>

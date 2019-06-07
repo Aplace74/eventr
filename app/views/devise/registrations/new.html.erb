@@ -6,13 +6,13 @@
 
     <div class="form-inputs text-center">
       <div class="form-group file optional user_avatar">
-        <label for="user_avatar">
+        <label class="file optional" for="user_avatar">
           <i class="fas fa-user-circle fa-5x text-center"></i>
           <p>Une photo de vous</p>
         </label>
-        <input class="form-control-file file optional" type="file" name="user[avatar]" id="user_avatar">
       </div>
       <%= f.input :avatar_cache, as: :hidden %>
+      <%= f.input :avatar, label: false %>
       <%= f.input :first_name,
                   placeholder: "Prénom",
                   required: true,
@@ -45,7 +45,7 @@
     </div>
 
     <div class="form-actions text-center">
-      <%= f.button :submit, "Créer mon compte", class: "btn-base btn-green" %>
+      <%= f.button :submit, "Créer mon compte", class: "btn-base btn-blue" %>
     </div>
   <% end %>
 

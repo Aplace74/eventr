@@ -71,7 +71,8 @@ barbecue = Event.create!(
   address: "7 rue du Pont Neuf",
   city: "Marcq-en-Baroeul", 
   zipcode: "59300",
-  user_id: max[:id]
+  user_id: max[:id],
+  token: (0...10).map { (65 + rand(26)).chr }.join
 )
 barbecue.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559728867/evt02xw2kvy7hmuzwmkq.jpg"
 barbecue.save
@@ -92,7 +93,8 @@ anniversaire = Event.create!(
   address: "105 rue de la Monnaie",
   city: "Lille", 
   zipcode: "59000",
-  user_id: anto[:id]
+  user_id: anto[:id],
+  token: (0...10).map { (65 + rand(26)).chr }.join
 )
 anniversaire.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729073/y7i99pftlhehn6cwjrbu.jpg"
 anniversaire.save
@@ -113,7 +115,8 @@ piscine = Event.create!(
   address: "33 rue du Chateau",
   city: "Lambersart", 
   zipcode: "59130",
-  user_id: aym[:id]
+  user_id: aym[:id],
+  token: (0...10).map { (65 + rand(26)).chr }.join
 )
 piscine.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729372/ggyt6qrjmueobqayovvx.jpg"
 piscine.save
@@ -134,7 +137,8 @@ juillet_14 = Event.create!(
   address: "100 rue des Petis",
   city: "Lomme", 
   zipcode: "59200",
-  user_id: chris[:id]
+  user_id: chris[:id],
+  token: (0...10).map { (65 + rand(26)).chr }.join
 )
 piscine.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729372/ggyt6qrjmueobqayovvx.jpg"
 piscine.save
