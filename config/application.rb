@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Eventr
   class Application < Rails::Application
+    config.action_mailer.delivery_method = :postmark
+    config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'] }
+
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.generators do |generate|
           generate.assets false
