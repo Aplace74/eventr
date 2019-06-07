@@ -15,6 +15,11 @@ Rails.application.routes.draw do
     resources :supplies, only: [:index, :create, :update, :destroy]
   end
 
+  resources :contributions, only: [] do
+    post 'change-state', to: 'contributions#change_state'
+  end
+  
+
   # static pages
   get "/composants" => "pages#composants"
 

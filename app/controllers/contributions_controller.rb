@@ -1,5 +1,7 @@
 class ContributionsController < ApplicationController
   skip_after_action :verify_policy_scoped, only: :index
+  skip_before_action :verify_authenticity_token, only: :change_state
+  skip_after_action :verify_authorized, only: :change_state
 
   def create
     @supply = Supply.find(params[:supply_id])
@@ -18,6 +20,12 @@ class ContributionsController < ApplicationController
     @event = Event.find(params[:event_id])
     @contributions = @event.participations.where(user: current_user)[0].contributions
   end
+
+  def change_state
+    contribution = Contribution.find(params[:contribution_id])
+    contribution.state = !contribution.state
+    contribution.save
+  end
   
   private
 
@@ -25,7 +33,8 @@ class ContributionsController < ApplicationController
     {
       part: params[:part].to_i,
       participation_id: params[:participation_id].to_i,
-      supply_id: params[:supply_id].to_i
+      supply_id: params[:supply_id].to_i,
+      contribution_id: params[:contribution_id].to_i
     }
   end
 
