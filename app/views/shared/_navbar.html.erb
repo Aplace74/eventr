@@ -20,9 +20,9 @@
         <%= cl_image_tag user.avatar, class: "avatar" %> 
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <%= link_to "Modifier mon profile", edit_user_registration_path, class: "dropdown-item" %>
+        <%= link_to "Modifier mon profile", edit_user_registration_path, class: "dropdown-item text-dark" %>
         <div class="dropdown-divider"></div>
-        <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item text-dark" %>
       </div>
     </li>
   </ul>

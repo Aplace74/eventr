@@ -17,7 +17,8 @@
     <div class="d-flex row">
         <% @participants.each do |p|%>
             <div class="col-4 my-4 <%= "d-none" if !p.confirmed %>">
-                <img src="<%= cl_image_path p.user.avatar %>" class="rounded-circle mb-3"><br />
+                <%= p.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "rounded-circle mb-3"}) :  cl_image_tag(p.user.avatar, options = {class: "rounded-circle mb-3"}) %>
+                <br />
                 <%= p.user.first_name %>
             </div>
         <%end%>
