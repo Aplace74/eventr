@@ -6,13 +6,13 @@
         <i class="fas fa-home" style="font-size: 25px"></i>
       <% end %>
     </div>
-    <li class="nav-item active">
+    <li id="item-participations" class="nav-item">
       <%= link_to 'Invités', event_participations_path(@event) %>
     </li>
-    <li class="nav-item">
+    <li id="item-details" class="nav-item">
       <%= link_to 'Détails', event_path(@event) %>
     </li>
-    <li>
+    <li id="item-list" class="nav-item">
       <%= link_to 'Ma liste', event_contributions_path(@event) %>
     </li>
     <li class="nav-item dropdown dropleft">

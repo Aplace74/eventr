@@ -2,3 +2,8 @@
 <%= render "shared/event_header", event: @event %>
 
 <%= render 'shared/to_do', contributions: @contributions %>
+
+<script>
+  const activeTab = document.getElementById("item-list")
+  activeTab.classList.add("active")
+</script>
