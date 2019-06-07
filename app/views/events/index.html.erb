@@ -2,7 +2,16 @@
   <div class="event-banner">
   <div class="container align-items-center d-flex justify-content-between">
     <h1>Bonjour <%= current_user.first_name %></h1>
-    <%= cl_image_tag current_user.avatar, class:"avatar-bordered" %>
+    <div class="dropdown dropleft">
+      <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= cl_image_tag current_user.avatar, class:"avatar-bordered" %>
+      </div>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%= link_to "Modifier mon profile", edit_user_registration_path, class: "dropdown-item" %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Me déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      </div>
+    </div>
   </div>
   </div>
   
