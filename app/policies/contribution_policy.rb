@@ -9,4 +9,8 @@ class ContributionPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def change_state?
+    true
+  end
 end
