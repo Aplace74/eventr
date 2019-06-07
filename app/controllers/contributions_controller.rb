@@ -33,8 +33,7 @@ class ContributionsController < ApplicationController
     {
       part: params[:part].to_i,
       participation_id: params[:participation_id].to_i,
-      supply_id: params[:supply_id].to_i,
-      contribution_id: params[:contribution_id].to_i
+      supply_id: params[:supply_id].to_i
     }
   end
 
