@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
+    @title = @event.title
     authorize @event
     @categories = Category.all
     @participation = Participation.where(user_id: current_user.id).where(event_id: @event.id).first
@@ -12,12 +13,14 @@ class EventsController < ApplicationController
     @events = policy_scope(Event)
     @user_events = @events.where(user: current_user)
     @attending = Participation.where(user: current_user).map { |p| p.event }
+    @title = "Mes événements"
   end
 
   def new
     @event = Event.new
     @event.user = current_user
     authorize @event
+    @title = "Créer ton nouvel événement"
   end
 
   def create
@@ -41,6 +44,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
     authorize @event
     @participation = Participation.new
+    @title = "Invite tes amis"
   end
 
   private
