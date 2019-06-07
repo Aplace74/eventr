@@ -32,6 +32,8 @@ class EventsController < ApplicationController
         user_id: @event.user.id,
         organizer: true
       )
+      mail = EventMailer.with(event: @event).create_confirmation
+      mail.deliver_now
       redirect_to events_path
     else
       render :new
