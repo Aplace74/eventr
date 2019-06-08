@@ -12,7 +12,11 @@ class EventsController < ApplicationController
   def index
     @events = policy_scope(Event)
     @user_events = @events.where(user: current_user)
-    @attending = Participation.where(user: current_user).map { |p| p.event }
+    @attending = Participation.where(user: current_user, organizer: false).map { |p| p.event }
+    @finish = Participation.where(user: current_user).map do |p|
+      p.event if DateTime.now.to_date > p.event.end_date
+    end
+    @finish.compact!
     @title = "Mes événements"
   end
 
@@ -32,7 +36,7 @@ class EventsController < ApplicationController
         confirmed: true,
         event_id: @event.id,
         user_id: @event.user.id,
-        organizer: true
+        organizer: true,
       )
       mail = EventMailer.with(event: @event).create_confirmation
       mail.deliver_now
