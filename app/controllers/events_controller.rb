@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event)
+    @categories = Category.all
     @user_events = @events.where(user: current_user)
     @attending = Participation.where(user: current_user).map { |p| p.event }
     @title = "Mes événements"
