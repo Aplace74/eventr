@@ -11,10 +11,10 @@
 	</div>
 	<div class="infos">
 		<div class="supplies">
-			<% @categories.each do |categorie| %>
+			<% @categories.each do |category| %>
 				<span class="badge-pill badge badge-dark">
-					<i class="<%= categorie.icon %>"></i>
-					<%= categorie.supplies.size - categorie.category_supplies(event).size %>
+					<i class="<%= category.icon %>"></i>
+					<%=  category.category_supplies(event).size - category.status(event) %>
 				</span>
 			<% end %>
 		</div>
