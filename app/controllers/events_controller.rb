@@ -38,7 +38,7 @@ class EventsController < ApplicationController
         confirmed: true,
         event_id: @event.id,
         user_id: @event.user.id,
-        organizer: true,
+        organizer: true
       )
       mail = EventMailer.with(event: @event).create_confirmation
       mail.deliver_now
