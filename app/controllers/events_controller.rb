@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
+    @map_url = (@event.address.split(" ") + @event.city.split(" ")).join("+")
     @title = @event.title
     authorize @event
     @categories = Category.all
