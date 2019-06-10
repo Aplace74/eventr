@@ -87,8 +87,8 @@ Participation.create!(
 anniversaire = Event.create!(
   description: "Je compte sur vous pour être présent",
   title: "25 ans Antoine",
-  start_date: Date.new(2019, 6, 10),
-  end_date: Date.new(2019, 6, 10),
+  start_date: Date.new(2019, 6, 12),
+  end_date: Date.new(2019, 6, 13),
   picture: "",
   address: "105 rue de la Monnaie",
   city: "Lille", 
