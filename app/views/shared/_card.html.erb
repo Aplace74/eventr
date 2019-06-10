@@ -11,29 +11,23 @@
 	</div>
 	<div class="infos">
 		<div class="supplies">
-			<span class="badge-pill badge badge-dark">
-      <i class="fas fa-drumstick-bite"></i>
-      3 
-			</span>
-			<span class="badge-pill badge badge-dark">
-				<i class="fas fa-beer"></i>
-				3
-			</span>
-			<span class="badge-pill badge badge-dark">
-				<i class="fas fa-music"></i>
-				3
-			</span>
+			<% @categories.each do |categorie| %>
+				<span class="badge-pill badge badge-dark">
+					<i class="<%= categorie.icon %>"></i>
+					<%= categorie.supplies.size - categorie.category_supplies(event).size %>
+				</span>
+			<% end %>
 		</div>
 		<div class="guests">
 			<div class="img">
-      <% event.participations.first(4).each do |participant| %>
-				<%= participant.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "avatar-bordered"}) :  cl_image_tag(participant.user.avatar, options = {class: "avatar-bordered"}) %>
-        <% end %>
+				<% event.participations.first(4).each do |participant| %>
+					<%= participant.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "avatar-bordered"}) :  cl_image_tag(participant.user.avatar, options = {class: "avatar-bordered"}) %>
+				<% end %>
 			</div>
 			<p>participant(s) </p>
 		</div>
 	</div>
 	<div class="organizer">
-	<%= event.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "avatar-bordered"}) :  cl_image_tag(event.user.avatar, options = {class: "avatar-bordered"}) %>
+		<%= event.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "avatar-bordered"}) :  cl_image_tag(event.user.avatar, options = {class: "avatar-bordered"}) %>
 	</div>
 </div>

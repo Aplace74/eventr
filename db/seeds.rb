@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require 'date'
+require "date"
 
 puts "Clearing DB..."
 Contribution.destroy_all
@@ -21,10 +21,10 @@ puts "................."
 puts "Creating users..."
 
 chris = User.create!(
-    first_name: "Christophe",
-    last_name: "Lepretre",
-    email: "chrislep62@gmail.com",
-    password: "123456"
+  first_name: "Christophe",
+  last_name: "Lepretre",
+  email: "chrislep62@gmail.com",
+  password: "123456",
 )
 chris.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHJNRSJ2X-8033519bd289-48"
 chris.save
@@ -33,7 +33,7 @@ max = User.create!(
   first_name: "Maxime",
   last_name: "Derouet",
   email: "mxderouet@gmail.com",
-  password: "password"
+  password: "password",
 )
 max.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHJNDRP50-4cbef4975b23-48"
 max.save
@@ -42,7 +42,7 @@ aym = User.create!(
   first_name: "Aymeric",
   last_name: "Dhalluin",
   email: "aymeric.dhalluin@gmail.com",
-  password: "123456"
+  password: "123456",
 )
 aym.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHVHHPMT6-070fc749feb5-48"
 aym.save
@@ -51,7 +51,7 @@ anto = User.create!(
   first_name: "Antoine",
   last_name: "Place",
   email: "antoineplace2212@gmail.com",
-  password: "123456"
+  password: "123456",
 )
 anto.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHW3LLS4V-bbfea18ca08e-48"
 anto.save
@@ -69,10 +69,10 @@ barbecue = Event.create!(
   end_date: Date.new(2019, 6, 19),
   picture: "",
   address: "7 rue du Pont Neuf",
-  city: "Marcq-en-Baroeul", 
+  city: "Marcq-en-Baroeul",
   zipcode: "59300",
   user_id: max[:id],
-  token: (0...10).map { (65 + rand(26)).chr }.join
+  token: (0...10).map { (65 + rand(26)).chr }.join,
 )
 barbecue.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559728867/evt02xw2kvy7hmuzwmkq.jpg"
 barbecue.save
@@ -81,7 +81,7 @@ Participation.create!(
   confirmed: true,
   event_id: barbecue[:id],
   user_id: max[:id],
-  organizer: true
+  organizer: true,
 )
 
 anniversaire = Event.create!(
@@ -91,10 +91,10 @@ anniversaire = Event.create!(
   end_date: Date.new(2019, 6, 13),
   picture: "",
   address: "105 rue de la Monnaie",
-  city: "Lille", 
+  city: "Lille",
   zipcode: "59000",
   user_id: anto[:id],
-  token: (0...10).map { (65 + rand(26)).chr }.join
+  token: (0...10).map { (65 + rand(26)).chr }.join,
 )
 anniversaire.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729073/y7i99pftlhehn6cwjrbu.jpg"
 anniversaire.save
@@ -103,7 +103,7 @@ Participation.create!(
   confirmed: true,
   event_id: anniversaire[:id],
   user_id: anto[:id],
-  organizer: true
+  organizer: true,
 )
 
 piscine = Event.create!(
@@ -113,10 +113,10 @@ piscine = Event.create!(
   end_date: Date.new(2019, 6, 26),
   picture: "",
   address: "33 rue du Chateau",
-  city: "Lambersart", 
+  city: "Lambersart",
   zipcode: "59130",
   user_id: aym[:id],
-  token: (0...10).map { (65 + rand(26)).chr }.join
+  token: (0...10).map { (65 + rand(26)).chr }.join,
 )
 piscine.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729372/ggyt6qrjmueobqayovvx.jpg"
 piscine.save
@@ -125,7 +125,7 @@ Participation.create!(
   confirmed: true,
   event_id: piscine[:id],
   user_id: aym[:id],
-  organizer: true
+  organizer: true,
 )
 
 juillet_14 = Event.create!(
@@ -135,10 +135,10 @@ juillet_14 = Event.create!(
   end_date: Date.new(2019, 7, 15),
   picture: "",
   address: "100 rue des Petis",
-  city: "Lomme", 
+  city: "Lomme",
   zipcode: "59200",
   user_id: chris[:id],
-  token: (0...10).map { (65 + rand(26)).chr }.join
+  token: (0...10).map { (65 + rand(26)).chr }.join,
 )
 piscine.remote_picture_url = "http://res.cloudinary.com/startmeuplille/image/upload/v1559729372/ggyt6qrjmueobqayovvx.jpg"
 piscine.save
@@ -147,23 +147,26 @@ Participation.create!(
   confirmed: true,
   event_id: juillet_14[:id],
   user_id: chris[:id],
-  organizer: true
-) 
+  organizer: true,
+)
 
 puts "Users & events OK !"
 puts "...................."
 puts "Adding Categories..."
 
 drinks = Category.create!(
-  name: "Boissons"
+  name: "Boissons",
+  icon: "fas fa-beer",
 )
 
 food = Category.create!(
-  name: "Nourriture"
+  name: "Nourriture",
+  icon: "fas fa-drumstick-bite",
 )
 
 other = Category.create!(
-  name: "Autres"
+  name: "Autres",
+  icon: "fas fa-music",
 )
 
 puts "Categories OK !"
@@ -174,28 +177,28 @@ saucisses = Supply.create!(
   title: "Saucisses",
   quantity: 12,
   category_id: food[:id],
-  event_id: piscine[:id]
+  event_id: piscine[:id],
 )
 
 baguettes = Supply.create!(
   title: "Baguettes",
   quantity: 5,
   category_id: food[:id],
-  event_id: anniversaire[:id]
+  event_id: anniversaire[:id],
 )
 
 vin = Supply.create!(
   title: "Vin Rouge",
   quantity: 2,
   category_id: drinks[:id],
-  event_id: piscine[:id]
+  event_id: piscine[:id],
 )
 
 music = Supply.create!(
   title: "Enceintes",
   quantity: 1,
   category_id: other[:id],
-  event_id: piscine[:id]
+  event_id: piscine[:id],
 )
 
 puts "Supplies OK"
@@ -205,25 +208,25 @@ puts "Adding Participations..."
 part_max = Participation.create!(
   confirmed: true,
   event_id: piscine[:id],
-  user_id: max[:id]
+  user_id: max[:id],
 )
 
 part_aym = Participation.create!(
   confirmed: true,
   event_id: anniversaire[:id],
-  user_id: aym[:id]
+  user_id: aym[:id],
 )
 
 part_anto = Participation.create!(
   confirmed: true,
   event_id: barbecue[:id],
-  user_id: anto[:id]
+  user_id: anto[:id],
 )
 
 part_chris = Participation.create!(
   confirmed: true,
   event_id: barbecue[:id],
-  user_id: chris[:id]
+  user_id: chris[:id],
 )
 
 puts "Participations OK"
@@ -234,35 +237,29 @@ contrib_max = Contribution.create!(
   part: 2,
   state: true,
   supply_id: baguettes[:id],
-  participation_id: part_max[:id]
+  participation_id: part_max[:id],
 )
 
 contrib_aym = Contribution.create!(
   part: 1,
   state: true,
   supply_id: music[:id],
-  participation_id: part_aym[:id]
+  participation_id: part_aym[:id],
 )
 
 contrib_chris = Contribution.create!(
   part: 3,
   state: true,
   supply_id: saucisses[:id],
-  participation_id: part_chris[:id]
+  participation_id: part_chris[:id],
 )
 
 contrib_anto = Contribution.create!(
   part: 6,
   state: true,
   supply_id: saucisses[:id],
-  participation_id: part_anto[:id]
+  participation_id: part_anto[:id],
 )
-
 
 puts "Contributions OK"
 puts "Seed DONE !!! "
-
-
-
-
-
