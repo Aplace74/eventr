@@ -1,4 +1,5 @@
 class ErrorsController < ApplicationController
+    skip_after_action :verify_authorized
 
     def not_found
       render status: 404
