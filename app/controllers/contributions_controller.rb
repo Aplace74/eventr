@@ -16,6 +16,15 @@ class ContributionsController < ApplicationController
     end
   end
 
+  def update
+    @participation = Participation.find(params[:participation_id])
+    @supply = Supply.find(params[:supply_id])
+    @contribution = Contribution.find(params[:contribution_id])
+    @contribution.part = params[:part]
+    authorize @contribution
+    @contribution.save
+  end
+
   def index
     @event = Event.find(params[:event_id])
     @contributions = @event.participations.where(user: current_user)[0].contributions
@@ -26,7 +35,7 @@ class ContributionsController < ApplicationController
     contribution.state = !contribution.state
     contribution.save
   end
-  
+
   private
 
   def contribution_params
@@ -36,5 +45,4 @@ class ContributionsController < ApplicationController
       supply_id: params[:supply_id].to_i
     }
   end
-
 end

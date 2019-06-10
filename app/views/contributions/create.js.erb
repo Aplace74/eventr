@@ -1,6 +1,6 @@
-function refreshForm(innerHTML) {
+const refreshForm = (innerHTML) => {
   const supplyCard = document.querySelector("[data-supply-id='<%= @supply.id %>']");
   supplyCard.innerHTML = innerHTML;
 }
 
-refreshForm('<%= j render "supply_card", supply: @supply, rest: @supply.rest, participation: @participation %>')
+refreshForm("<%= j render 'supply_card', supply: @supply, rest: @supply.rest, participation: @participation %>")
