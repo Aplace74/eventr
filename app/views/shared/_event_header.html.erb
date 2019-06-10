@@ -10,10 +10,12 @@
       <p><%= event.address %></p>
     </div>
     <div class="map">
+    <%= link_to("https://www.google.com/maps/search/#{map_url}", target: "_blank") do %>
       <span class="fa-stack fa-2x">
       <i class="fas fa-circle fa-stack-2x"></i>
       <i class="fas fa-map-marked-alt fa-stack-1x fa-inverse"></i>
       </span>
+    <%end%>
     </div>
   </div>
 </div>
