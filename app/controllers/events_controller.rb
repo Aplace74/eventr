@@ -51,7 +51,9 @@ class EventsController < ApplicationController
   end
 
   def invitation
-    @event = Event.find(params[:event_id])
+    @event = Event.find(params[:event_id])  
+    redirect_to event_path(@event) if (@event.participations & current_user.participations).present?
+    @map_url = (@event.address.split(" ") + @event.city.split(" ")).join("+")
     authorize @event
     @participation = Participation.new
     @title = "Invite tes amis"
