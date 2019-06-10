@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
+    @map_url = (@event.address.split(" ") + @event.city.split(" ")).join("+")
     @title = @event.title
     authorize @event
     @categories = Category.all
@@ -11,9 +12,14 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event)
-    @categories = Category.all
-    @user_events = @events.where(user: current_user)
-    @attending = Participation.where(user: current_user).map { |p| p.event }
+    @user_events = @events.where(user: current_user).map { |event| event if DateTime.now.to_date < event.end_date }
+    @attending = Participation.where(user: current_user, organizer: false).map { |participation| participation.event if DateTime.now.to_date <= participation.event.end_date }
+    @finish = Participation.where(user: current_user).map do |participation|
+      participation.event if DateTime.now.to_date > participation.event.end_date
+    end
+    @user_events.compact!
+    @attending.compact!
+    @finish.compact!
     @title = "Mes événements"
   end
 
