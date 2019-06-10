@@ -18,6 +18,7 @@ class ContributionsController < ApplicationController
 
   def index
     @event = Event.find(params[:event_id])
+    @map_url = (@event.address.split(" ") + @event.city.split(" ")).join("+")
     @contributions = @event.participations.where(user: current_user)[0].contributions
   end
 

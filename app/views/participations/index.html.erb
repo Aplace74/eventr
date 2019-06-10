@@ -1,5 +1,5 @@
 <%= render "shared/navbar", user: current_user %>
-<%= render "shared/event_header", event: @event %>
+<%= render "shared/event_header", event: @event, map_url: @map_url %>
 <div class="text-center container">
     <% if @participation.organizer %>
         <input type="text" value="<%= "http://www.eventr.fr#{event_invitation_path(token: @event.token)}" %>" id="link">
