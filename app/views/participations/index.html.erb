@@ -17,7 +17,11 @@
     <div class="d-flex row">
         <% @participants.each do |p|%>
             <div class="col-4 my-4 <%= "d-none" if !p.confirmed %>">
-                <%= p.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "rounded-circle mb-3"}) :  cl_image_tag(p.user.avatar, options = {class: "rounded-circle mb-3"}) %>
+                <% if p.organizer%>
+                    <%= p.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "rounded-circle mb-3 shadow green-border"}) :  cl_image_tag(p.user.avatar, options = {class: "rounded-circle mb-3 shadow green-border"}) %>
+                <%else%>
+                    <%= p.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "rounded-circle mb-3 shadow"}) :  cl_image_tag(p.user.avatar, options = {class: "rounded-circle mb-3 shadow"}) %>
+                <%end%>
                 <br />
                 <%= p.user.first_name %><%= p " (organisateur)" if p.organizer%>
             </div>
