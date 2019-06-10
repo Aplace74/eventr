@@ -12,6 +12,7 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event)
+    @categories = Category.all
     @user_events = @events.where(user: current_user).map { |event| event if DateTime.now.to_date < event.end_date }
     @attending = Participation.where(user: current_user, organizer: false).map { |participation| participation.event if DateTime.now.to_date <= participation.event.end_date }
     @finish = Participation.where(user: current_user).map do |participation|

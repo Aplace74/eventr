@@ -14,9 +14,8 @@
 			<% @categories.each do |categorie| %>
 				<span class="badge-pill badge badge-dark">
 					<i class="<%= categorie.icon %>"></i>
-					3 
+					<%= categorie.supplies.size - categorie.category_supplies(event).size %>
 				</span>
-				<% raise %>
 			<% end %>
 		</div>
 		<div class="guests">
