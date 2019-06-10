@@ -4,7 +4,7 @@
     <h1>Bonjour <%= current_user.first_name %></h1>
     <div class="dropdown dropleft">
       <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= cl_image_tag current_user.avatar, class:"avatar-bordered" %>
+        <%= current_user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "avatar-bordered"}) :  cl_image_tag(current_user.avatar, options = {class: "avatar-bordered"}) %>
       </div>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <%= link_to "Modifier mon profile", edit_user_registration_path, class: "dropdown-item" %>

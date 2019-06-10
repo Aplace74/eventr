@@ -3,7 +3,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  color: white;
   padding: 4px;
   margin: 0;
   a {
@@ -17,10 +16,6 @@
 
   a:hover {
     opacity: 0.8;
-  }
-
-  .dropdown-menu {
-    background: $green-bg-btn;
   }
 }
 
