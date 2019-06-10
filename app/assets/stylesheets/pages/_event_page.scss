@@ -96,3 +96,17 @@
   border-radius: 5px;
   margin-top: 2rem;
 }
+
+#counter {
+  margin: 0 15px;
+}
+
+.round-bordered {
+  border: 1px solid #5a5a5a;
+  border-radius: 50%;
+  width: 25px;
+  font-size: 16px;
+  color: #848484;
+  height: 25px;
+  padding: 3px
+}
