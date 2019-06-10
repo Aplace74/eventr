@@ -50,6 +50,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = Event.find(params[:id])
+    authorize @event
+    @event.destroy
+    redirect_to events_path
+  end
+
   def invitation
     @event = Event.find(params[:event_id])  
     redirect_to event_path(@event) if (@event.participations & current_user.participations).present?

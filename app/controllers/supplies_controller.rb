@@ -6,6 +6,14 @@ class SuppliesController < ApplicationController
     redirect_to event_path(@event)
   end
 
+  def destroy
+    @event = Event.find(params[:event_id])
+    @supply = Supply.find(params[:id])
+    authorize @supply
+    @supply.destroy
+    redirect_to event_path(@event)
+  end
+
   private
 
   def supply_params

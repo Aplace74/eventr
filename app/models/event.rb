@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :participations
-  has_many :supplies
+  has_many :participations, dependent: :destroy
+  has_many :supplies, dependent: :destroy
   has_many :users, through: :participation
   has_many :contributions, through: :participation
 
