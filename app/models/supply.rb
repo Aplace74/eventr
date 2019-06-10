@@ -1,7 +1,8 @@
 class Supply < ApplicationRecord
   belongs_to :category
   belongs_to :event
-  has_many :contributions
+  has_many :contributions, dependent: :destroy
+  has_many :contributions, dependent: :destroy
   has_many :participations, through: :contribution
 
   validates :quantity, :title, presence: true

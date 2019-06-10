@@ -2,26 +2,31 @@
 
 <div class="supply-card" data-supply-id="<%= supply.id %>" data-rest="<%= supply.rest %>" data-part="<%= @contribution.nil? ? 0 : @contribution.part %>">
   <strong><%= supply.quantity %> <%= supply.title %></strong>
-  <p style="font-size: 14px; color: grey; margin: 2px"><%= rest %> restant(s)</p>
+  <span class="mx-1">
+    <%= link_to event_supply_path(@event, supply), method: :delete, data: { confirm: "Êtes vous sûr ?" }, class: "text-decoration-none text-danger" do %>
+      <i class="fas fa-trash"></i>
+    <% end %>
+  </span>
   <% if rest <= 0 %>
-    <p class="text-success text-center" style="font-size: 14px; margin: 2px">complet</p>
+    <p style="font-size: 14px; color: green; margin: 2px"><%= rest %> restant(s)</p>
   <% else %>
-    <div class="actions d-flex align-items-center">
-      <span>J'en prend </span>
-      <button class="btn incrementer minus" data-offset="-1"><i class="fas fa-minus-circle"></i></button>
-      <span class="counter" data-count="<%= @contribution.nil? ? 0 : @contribution.part %>"><%= @contribution.nil? ? 0 : @contribution.part %></span>
-      <button class="btn incrementer plus" data-offset="1"><i class="fas fa-plus-circle"></i></button>
-      <% if @contribution.nil? %>
-        <form action="<%= event_contributions_path(@event) %>" method="POST" data-remote="true" class="text-center d-flex justify-content-around" style="font-size: 16px">
-      <% else %>
-        <form action="<%= contribution_updatepart_path(@contribution) %>" method="post" data-remote="true" class="text-center d-flex justify-content-around" style="font-size: 36px">
-      <% end %>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <%= hidden_field_tag :participation_id, participation.id %>
-        <%= hidden_field_tag :supply_id, supply.id %>
-        <input type="hidden" class="part" name="part" value="0">
-        <input type="submit" value="Go!" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
-      </form>
-    </div>
+    <p style="font-size: 14px; color: grey; margin: 2px"><%= rest %> restant(s)</p>
   <% end %>
+  <div class="actions d-flex align-items-center">
+    <span>J'en prend </span>
+    <button class="btn incrementer minus" data-offset="-1"><i class="fas fa-minus-circle"></i></button>
+    <span class="counter" data-count="<%= @contribution.nil? ? 0 : @contribution.part %>"><%= @contribution.nil? ? 0 : @contribution.part %></span>
+    <button class="btn incrementer plus" data-offset="1"><i class="fas fa-plus-circle"></i></button>
+    <% if @contribution.nil? %>
+      <form action="<%= event_contributions_path(@event) %>" method="POST" data-remote="true" class="text-center d-flex justify-content-around" style="font-size: 16px">
+    <% else %>
+      <form action="<%= contribution_updatepart_path(@contribution) %>" method="post" data-remote="true" class="text-center d-flex justify-content-around" style="font-size: 36px">
+    <% end %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :participation_id, participation.id %>
+      <%= hidden_field_tag :supply_id, supply.id %>
+      <input type="hidden" class="part" name="part" value="0">
+      <input type="submit" value="Go!" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
+    </form>
+  </div>
 </div>
