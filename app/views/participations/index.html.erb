@@ -19,7 +19,7 @@
             <div class="col-4 my-4 <%= "d-none" if !p.confirmed %>">
                 <%= p.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "rounded-circle mb-3"}) :  cl_image_tag(p.user.avatar, options = {class: "rounded-circle mb-3"}) %>
                 <br />
-                <%= p.user.first_name %>
+                <%= p.user.first_name %><%= p " (organisateur)" if p.organizer%>
             </div>
         <%end%>
     </div>

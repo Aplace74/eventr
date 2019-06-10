@@ -1,7 +1,7 @@
 class ParticipationsController < ApplicationController
   def index
-    @participants = policy_scope(Participation)
     @event = Event.find(params[:event_id])
+    @participants = policy_scope(Participation.where(event_id: @event.id))
     @participation = current_user.participations.where(event_id: @event.id).first
   end
 
