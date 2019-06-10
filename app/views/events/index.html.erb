@@ -46,8 +46,14 @@
   </div>
 
   <div class="separator">
-    <h4>Archivé(s)</h4>
+    <h4>Fini(s)</h4>
   </div>
-<div class="container"></div>  
+<div class="container">
+    <% @finish.each do |event| %>
+      <%= link_to event_path(event) do %>
+        <%= render "shared/card", event: event %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 </div>

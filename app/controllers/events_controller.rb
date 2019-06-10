@@ -12,8 +12,14 @@ class EventsController < ApplicationController
 
   def index
     @events = policy_scope(Event)
-    @user_events = @events.where(user: current_user)
-    @attending = Participation.where(user: current_user).map { |p| p.event }
+    @user_events = @events.where(user: current_user).map { |event| event if DateTime.now.to_date < event.end_date }
+    @attending = Participation.where(user: current_user, organizer: false).map { |participation| participation.event if DateTime.now.to_date <= participation.event.end_date }
+    @finish = Participation.where(user: current_user).map do |participation|
+      participation.event if DateTime.now.to_date > participation.event.end_date
+    end
+    @user_events.compact!
+    @attending.compact!
+    @finish.compact!
     @title = "Mes événements"
   end
 
