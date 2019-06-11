@@ -1,7 +1,8 @@
 class ParticipationsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
-    @map_url = (@event.address.split(" ") + @event.city.split(" ")).join("+")
+    @map_url = @event.map_url
+    @agenda_url = @event.agenda_url
     @participants = policy_scope(Participation.where(event_id: @event.id))
     @participation = Participation.find_by(user_id: current_user.id, event_id: @event.id)
   end
