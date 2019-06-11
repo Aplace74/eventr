@@ -10,7 +10,20 @@
   <div class="my-fee">
     <h3>Vous avez demandé <%= my_fee.cost %> €</h3>
     <p><%= my_fee.fee_contributions.size %> personnes participent</p>
-    <p>prix/personne : <%= my_fee.cost / (my_fee.fee_contributions.size + 1) %> €</p>
+    <p>prix/personne : <%= my_fee.price_per_person %> €</p>
+  </div>
+<% end %>
+
+<% unless @participation.fee_contributions.empty? %>
+  <div class="btn-green text-light">
+    <a class="btn text-light" data-toggle="collapse" href="#my-fees_contr" role="button" aria-expanded="false" aria-controls="my-fees_contr">
+      <h3>Je participe aux frais de <%= @participation.fee_contributions.size %> personne(s)</h3>
+    </a>
+    <div class="container collapse" id="my-fees_contr">
+      <% @participation.fee_contributions.each do |fc| %>
+        <p>Je dois <%= fc.fee.price_per_person %> € à <%= fc.fee.participation.user.first_name %> <%= fc.fee.participation.user.last_name %></p>
+      <% end %>
+    </div>
   </div>
 <% end %>
 
