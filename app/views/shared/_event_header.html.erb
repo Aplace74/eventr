@@ -1,13 +1,13 @@
-<div id="event-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), 
+<div id="event-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
   url('<%= @event.picture.url.nil? ? asset_url("default-event.jpg") :  cl_image_path(@event.picture) %>');">
   <div class="container">
     <div>
       <h2><%= event.title %></h2>
       <p>
         <strong>Date:</strong>
-        <%= event.start_date %> au <%= event.end_date %>
+        <%= l(event.start_date, format: :custom) %> <%= "au #{l(event.end_date, format: :custom)}" if event.end_date > event.start_date %>
       </p>
-      <p><%= event.address %></p>
+      <p><%= event.address %> à <%= event.city %></p>
     </div>
     <div class="map d-flex flex-column justify-content-start">
     <%= link_to("https://www.google.com/maps/search/#{map_url}", target: "_blank") do %>

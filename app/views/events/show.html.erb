@@ -3,7 +3,7 @@
 <%= render "shared/navbar", user: current_user %>
 <%= render "shared/event_header", event: @event, map_url: @map_url, agenda_url: @agenda_url %>
 <div class="container">
-  <div class="description">
+  <div class="description p-3">
     <p><strong>Infos :</strong> <%= @event.description %></p>
     <div class="text-center ml-1">
       <%= cl_image_tag @event.user.avatar, height: 30, width: 30, crop: :fill, class: "avatar" %>
