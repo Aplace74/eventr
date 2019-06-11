@@ -24,19 +24,18 @@
                     <%= p.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "rounded-circle mb-3 shadow"}) :  cl_image_tag(p.user.avatar, class: "rounded-circle mb-3 shadow", transformation: {width: 72, height: 72, gravity: "face"}) %> 
                 <%end%>
                 <br />
-                <%= p.user.first_name %><%= p " (organisateur)" if p.organizer%>
-            </div>
-        <%end%>
-    </div>
+			<%= p.user.first_name %><%= p " (organisateur)" if p.organizer%>
+		</div>
+	<%end%>
 </div>
-
+</div>
 <script>
-    const copyLink = () => {
-        const link = document.getElementById("link");
-        document.getElementById("confirm").removeAttribute('hidden');
-        link.select();
-        document.execCommand("copy");
-    };
-    const activeTab = document.getElementById("item-participations")
-    activeTab.classList.add("active")
+	const copyLink = () => {
+	    const link = document.getElementById("link");
+	    document.getElementById("confirm").removeAttribute('hidden');
+	    link.select();
+	    document.execCommand("copy");
+	};
+	const activeTab = document.getElementById("item-participations")
+	activeTab.classList.add("active")
 </script>

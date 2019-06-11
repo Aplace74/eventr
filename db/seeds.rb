@@ -56,7 +56,34 @@ anto = User.create!(
 anto.remote_avatar_url = "https://ca.slack-edge.com/T02NE0241-UHW3LLS4V-bbfea18ca08e-48"
 anto.save
 
-users = [chris, aym, anto, max]
+nico = User.create!(
+  first_name: "Nico",
+  last_name: "Rembry",
+  email: "nico@gmail.com",
+  password: "123456",
+)
+nico.remote_avatar_url = "https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/52709844_10218043349986138_2993209880208211968_o.jpg?_nc_cat=102&_nc_ht=scontent-lhr3-1.xx&oh=8bc98e1a67f9215139a9e0cc110b0c49&oe=5D7F866B"
+nico.save
+
+ines = User.create!(
+  first_name: "Ines",
+  last_name: "Lenglard",
+  email: "ines@gmail.com",
+  password: "123456",
+)
+ines.remote_avatar_url = "https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/14520531_1244795138898622_550033815792548773_n.jpg?_nc_cat=101&_nc_ht=scontent-lhr3-1.xx&oh=1cb18393ffc5d62f6aeb6ecd0a4b600b&oe=5D8DFD85"
+ines.save
+
+flo = User.create!(
+  first_name: "Florian",
+  last_name: "Ducoulombier",
+  email: "flo@gmail.com",
+  password: "123456",
+)
+flo.remote_avatar_url = "https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/60318925_2210559925690435_2389706978722054144_n.jpg?_nc_cat=101&_nc_ht=scontent-lhr3-1.xx&oh=b09041e11c04110ab356273e76ff59c6&oe=5D89C70F"
+flo.save
+
+users = [chris, aym, anto, max, nico, ines, flo]
 
 puts "Users OK"
 puts ".................."
@@ -227,6 +254,24 @@ part_chris = Participation.create!(
   confirmed: true,
   event_id: barbecue[:id],
   user_id: chris[:id],
+)
+
+part_nico = Participation.create!(
+  confirmed: true,
+  event_id: piscine[:id],
+  user_id: nico[:id]
+)
+
+part_ines = Participation.create!(
+  confirmed: true,
+  event_id: piscine[:id],
+  user_id: ines[:id]
+)
+
+part_flo = Participation.create!(
+  confirmed: true,
+  event_id: piscine[:id],
+  user_id: flo[:id]
 )
 
 puts "Participations OK"
