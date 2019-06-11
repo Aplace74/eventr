@@ -15,7 +15,7 @@
         <%= link_to 'Je ne participe plus', event_participation_path(event_id: @event.id, id: @participation.id), data: { confirm: "Voullez vous vraiment quitter l'évenement ?"}, method: :delete, class: "btn btn-red btn-base" %>
     <% end %>
     <h1>Participants</h1>
-    <div class="d-flex row">
+    <div class="d-flex row guest-list">
         <% @participants.each do |p|%>
             <div class="col-4 my-4 <%= "d-none" if !p.confirmed %>">
                 <% if p.organizer%>
