@@ -1,7 +1,7 @@
 <section class="todo">
 	<h2>Ma liste</h2>
 	<ul class="todo-list">
-		<% if contributions.nil? %>
+		<% if contributions.empty? %>
 			<li>Vous n'avez encore rien dans votre liste</li>
 		<% else %>
 			<% contributions.each do |contribution| %>

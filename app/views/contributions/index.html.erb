@@ -19,17 +19,17 @@
       </form>
     <% else %>
       <a class="btn" data-toggle="collapse" href="#modif-form" role="button" aria-expanded="false" aria-controls="modif-form">
-        <h3>Vous avez demandé <%= @participation.fee.cost %> € pour vos frais.
+        <h3 class="text-secondary">Vous avez demandé <%= @participation.fee.cost %> € pour vos frais.
         <i class="fas fa-edit"></i>
         </h3>
       </a>
       <div class="collapse" id="modif-form">
-        <form action="<%= event_fee_path(@event, @participation.fee) %>" method="patch">
+        <%= form_for([@event, @participation.fee], method: :put) do %>
           <input type="number" name="cost" value="<%= @participation.fee.cost %>">
           <label for="cost"> €</label>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %><br>
           <input type="submit" value="Envoyer" class="btn-base btn-blue">
-        </form>
+        <% end %>
         <%= link_to event_fee_path(@event, @participation.fee), method: :delete, class: "btn-base btn-red" do %>
           Ne rien demander
         <% end %>
