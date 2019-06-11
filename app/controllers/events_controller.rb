@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
-    @map_url = (@event.address.split(" ") + @event.city.split(" ")).join("+")
+    @map_url = @event.map_url
+    @agenda_url = @event.agenda_url
     @title = @event.title
     authorize @event
     @categories = Category.all
@@ -60,7 +61,8 @@ class EventsController < ApplicationController
   def invitation
     @event = Event.find(params[:event_id])  
     redirect_to event_path(@event) if (@event.participations & current_user.participations).present?
-    @map_url = (@event.address.split(" ") + @event.city.split(" ")).join("+")
+    @map_url = @event.map_url
+    @agenda_url = @event.agenda_url
     authorize @event
     @participation = Participation.new
     @title = "Invite tes amis"
@@ -71,4 +73,5 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit!
   end
+
 end
