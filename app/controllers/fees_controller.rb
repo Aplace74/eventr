@@ -25,4 +25,13 @@ class FeesController < ApplicationController
     @fee.destroy
     redirect_to event_contributions_path(@event)
   end
+
+  def update
+    @event = Event.find(params[:event_id])
+    @fee = Fee.find(params[:id])
+    authorize @fee
+    @fee.cost = params[:cost]
+    @fee.save
+    redirect_to event_contributions_path(@event)
+  end
 end

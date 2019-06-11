@@ -9,6 +9,10 @@ class FeePolicy < ApplicationPolicy
     true
   end
 
+  def update?
+    true
+  end
+
   def index?
     true
   end
