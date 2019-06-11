@@ -1,7 +1,44 @@
 <%= render "shared/navbar", user: current_user %>
 <%= render "shared/event_header", event: @event, map_url: @map_url, agenda_url: @agenda_url %>
 
-<%= render 'shared/to_do', contributions: @contributions %>
+<div class="container">
+
+  <%= render 'shared/to_do', contributions: @contributions %>
+
+  <div class="create-fee">
+
+    <% if @participation.fee.nil? %>
+      <h3>Demander une participation pour vos frais:</h3>
+      <form action="<%= event_fees_path(@event) %>" method="post">
+        <input type="number" name="cost">
+        <label for="cost"> €</label>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :participation_id, @participation.id %>
+        <%= hidden_field_tag :event_id, @event.id %><br>
+        <input type="submit" value="Demander" class="btn-base btn-blue">
+      </form>
+    <% else %>
+      <a class="btn" data-toggle="collapse" href="#modif-form" role="button" aria-expanded="false" aria-controls="modif-form">
+        <h3>Vous avez demandé <%= @participation.fee.cost %> € pour vos frais.
+        <i class="fas fa-edit"></i>
+        </h3>
+      </a>
+      <div class="collapse" id="modif-form">
+        <form action="<%= event_fee_path(@event, @participation.fee) %>" method="patch">
+          <input type="number" name="cost" value="<%= @participation.fee.cost %>">
+          <label for="cost"> €</label>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %><br>
+          <input type="submit" value="Envoyer" class="btn-base btn-blue">
+        </form>
+        <%= link_to event_fee_path(@event, @participation.fee), method: :delete, class: "btn-base btn-red" do %>
+          Ne rien demander
+        <% end %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
 
 <script>
   const activeTab = document.getElementById("item-list")

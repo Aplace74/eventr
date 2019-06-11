@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     @title = @event.title
     authorize @event
     @categories = Category.all
-    @participation = Participation.where(user_id: current_user.id).where(event_id: @event.id).first
+    @participation = Participation.find_by(user_id: current_user.id, event_id: @event.id)
     @contributions = @participation.contributions
     @contribution = Contribution.new
   end
@@ -35,6 +35,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
+    @event.token = (0...10).map { (65 + rand(26)).chr }.join
     authorize @event
     if @event.save
       Participation.create!(

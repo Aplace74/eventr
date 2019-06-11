@@ -4,7 +4,7 @@ class ParticipationsController < ApplicationController
     @map_url = @event.map_url
     @agenda_url = @event.agenda_url
     @participants = policy_scope(Participation.where(event_id: @event.id))
-    @participation = current_user.participations.where(event_id: @event.id).first
+    @participation = Participation.find_by(user_id: current_user.id, event_id: @event.id)
   end
 
   def create

@@ -26,7 +26,9 @@ class ContributionsController < ApplicationController
   end
 
   def index
+    @fee = Fee.new
     @event = Event.find(params[:event_id])
+    @participation = Participation.find_by(user_id: current_user.id, event_id: @event.id)
     @map_url = @event.map_url
     @agenda_url = @event.agenda_url
     @contributions = @event.participations.where(user: current_user)[0].contributions

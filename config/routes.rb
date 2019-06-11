@@ -9,13 +9,15 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+    resources :fees, only: [:create, :index, :update, :destroy]
     get '/:token/invitation', to: 'events#invitation', as: :invitation
     resources :contributions, only: [:index, :create, :destroy]
     resources :participations, only: [:index, :update, :destroy, :create]
     resources :supplies, only: [:index, :create, :update, :destroy]
+    resources :fee_contributions, only: [:destroy, :create]
   end
   
-  
+
   resources :contributions, only: [] do
     post 'update-part', to: 'contributions#update', as: :updatepart
     post 'change-state', to: 'contributions#change_state'
