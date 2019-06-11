@@ -1,7 +1,7 @@
 <% content_for :meta_title, "#{@event.start_date} | #{@event.title} chez #{@event.user.first_name}" %>
 
 <%= render "shared/navbar", user: current_user %>
-<%= render "shared/event_header", event: @event, map_url: @map_url %>
+<%= render "shared/event_header", event: @event, map_url: @map_url, agenda_url: @agenda_url %>
 <div class="container">
   <div class="description">
     <p><strong>Infos :</strong> <%= @event.description %></p>
