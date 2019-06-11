@@ -18,15 +18,18 @@
     <span class="counter" data-count="<%= @contribution.nil? ? 0 : @contribution.part %>"><%= @contribution.nil? ? 0 : @contribution.part %></span>
     <button class="btn incrementer plus" data-offset="1"><i class="fas fa-plus-circle"></i></button>
     <% if @contribution.nil? %>
-      <form action="<%= event_contributions_path(@event) %>" method="POST" data-remote="true" class="text-center d-flex justify-content-around" style="font-size: 16px">
+      <%= form_for([@event, Contribution.new]) do %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :participation_id, participation.id %>
+        <%= hidden_field_tag :supply_id, supply.id %>
+        <input type="hidden" class="part" name="part" value="0">
+        <input type="submit" value="Prendre" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
+      <% end %>
     <% else %>
-      <form action="<%= contribution_updatepart_path(@contribution) %>" method="post" data-remote="true" class="text-center d-flex justify-content-around" style="font-size: 36px">
+      <%= form_for([@event, @contribution], method: :put) do %>
+        <input type="hidden" class="part" name="part" value="0">
+        <input type="submit" value="Prendre" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
+      <% end %>
     <% end %>
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <%= hidden_field_tag :participation_id, participation.id %>
-      <%= hidden_field_tag :supply_id, supply.id %>
-      <input type="hidden" class="part" name="part" value="0">
-      <input type="submit" value="Go!" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
-    </form>
   </div>
 </div>

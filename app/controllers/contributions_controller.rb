@@ -17,12 +17,15 @@ class ContributionsController < ApplicationController
   end
 
   def update
-    @participation = Participation.find(params[:participation_id])
-    @supply = Supply.find(params[:supply_id])
-    @contribution = Contribution.find(params[:contribution_id])
+    @event = Event.find(params[:event_id])
+    @contribution = Contribution.find(params[:id])
     @contribution.part = params[:part]
     authorize @contribution
     @contribution.save
+    respond_to do |format|
+      format.html { redirect_to event_path(@event) }
+      format.js
+    end
   end
 
   def index
