@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_112646) do
+ActiveRecord::Schema.define(version: 2019_06_10_154334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,24 @@ ActiveRecord::Schema.define(version: 2019_06_10_112646) do
     t.bigint "user_id"
     t.string "token"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "fee_contributions", force: :cascade do |t|
+    t.bigint "fee_id"
+    t.bigint "participation_id"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["fee_id"], name: "index_fee_contributions_on_fee_id"
+    t.index ["participation_id"], name: "index_fee_contributions_on_participation_id"
+  end
+
+  create_table "fees", force: :cascade do |t|
+    t.integer "cost"
+    t.bigint "participation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participation_id"], name: "index_fees_on_participation_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -90,6 +108,9 @@ ActiveRecord::Schema.define(version: 2019_06_10_112646) do
   add_foreign_key "contributions", "participations"
   add_foreign_key "contributions", "supplies"
   add_foreign_key "events", "users"
+  add_foreign_key "fee_contributions", "fees"
+  add_foreign_key "fee_contributions", "participations"
+  add_foreign_key "fees", "participations"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
   add_foreign_key "supplies", "categories"

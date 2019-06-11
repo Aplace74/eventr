@@ -1,14 +1,16 @@
-<div class="container">
-	<section class="todo">
-		<h2>Ma liste</h2>
-		<ul class="todo-list">
+<section class="todo">
+	<h2>Ma liste</h2>
+	<ul class="todo-list">
+		<% if contributions.nil? %>
+			<li>Vous n'avez encore rien dans votre liste</li>
+		<% else %>
 			<% contributions.each do |contribution| %>
 				<% id = contribution.id %>
 				<% if contribution.state %>
 					<li>
 						<input type="checkbox" id="<%= id %>" checked/>
 						<label class="toggle" for="<%= id %>"></label>
-            <%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
+						<%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
 						<%= contribution.supply.title %>
 					</li>
 				<% else %>
@@ -20,6 +22,6 @@
 					</li>
 				<% end %>
 			<% end %>
-		</ul>
-	</section>
-</div>
+		<% end %>
+	</ul>
+</section>

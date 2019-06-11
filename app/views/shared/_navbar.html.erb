@@ -15,6 +15,9 @@
     <li id="item-list" class="nav-item">
       <%= link_to 'Ma liste', event_contributions_path(@event) %>
     </li>
+    <li id="item-frais" class="nav-item">
+      <%= link_to 'Frais', event_fees_path(@event) %>
+    </li>
     <li class="nav-item dropdown dropleft">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%= cl_image_tag user.avatar, class: "avatar" %> 

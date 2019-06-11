@@ -1,0 +1,21 @@
+<% fee_contribution = participation.fee_contributions.find_by(fee_id: fee.id) %>
+
+<div class="fee-card">
+
+  <h3><%= fee.participation.user.first_name %> à payé <%= fee.cost %> €</h3>
+  <p><%= fee.fee_contributions.size %> personnes participent</p>
+  <p>prix/personne : <%= fee.cost / (fee.fee_contributions.size + 1) %> €</p>
+  <% if fee_contribution.nil? %>
+    <form action="<%= event_fee_contributions_path(event) %>" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :fee_id, fee.id %>
+      <%= hidden_field_tag :participation_id, participation.id %>
+      <input type="submit" class="btn-thin btn-base btn-blue" value="Participer">
+    </form>
+  <% else %>
+    <%= link_to event_fee_contribution_path(event, fee_contribution), method: :delete, class: "btn-thin btn-base btn-red" do %>
+      Annuler participation
+    <% end %>
+  <% end %>
+
+</div>

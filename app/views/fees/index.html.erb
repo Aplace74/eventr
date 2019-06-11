@@ -1,0 +1,19 @@
+<%= render "shared/navbar", user: current_user %>
+<%= render "shared/event_header", event: @event, map_url: @map_url %>
+
+<div class="container">
+  <div class="cards">
+
+    <div class="card">
+    </div>
+
+    <% @fees.each do |fee| %>
+      <%= render "fee_card", event: @event, fee: fee, participation: @participation %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  const activeTab = document.getElementById("item-frais")
+  activeTab.classList.add("active")
+</script>

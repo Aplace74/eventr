@@ -19,7 +19,7 @@
     </div>
   </div>
   <% if current_user == event.user %>
-    <%= link_to event_path(event), method: :delete, data: { confirm: "Lévènement va être supprimé !" }, class: "btn-base btn-danger" do %>
+    <%= link_to event_path(event), method: :delete, data: { confirm: "Lévènement va être supprimé !" }, class: "btn-thin btn-base btn-red" do %>
       Annuler l'évènement
     <% end %>
   <% end %>
