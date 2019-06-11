@@ -3,7 +3,7 @@ class ParticipationsController < ApplicationController
     @event = Event.find(params[:event_id])
     @map_url = (@event.address.split(" ") + @event.city.split(" ")).join("+")
     @participants = policy_scope(Participation.where(event_id: @event.id))
-    @participation = current_user.participations.where(event_id: @event.id).first
+    @participation = Participation.find_by(user_id: current_user.id, event_id: @event.id)
   end
 
   def create

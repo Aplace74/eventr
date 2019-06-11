@@ -1,16 +1,28 @@
 <%= render "shared/navbar", user: current_user %>
 <%= render "shared/event_header", event: @event, map_url: @map_url %>
 
-<div class="container">
-  <div class="cards">
+<% if @fees.first.nil? %>
+  <p>Pas encore de frais...</p>
+<% end %>
 
-    <div class="card">
-    </div>
-
-    <% @fees.each do |fee| %>
-      <%= render "fee_card", event: @event, fee: fee, participation: @participation %>
-    <% end %>
+<% my_fee = @fees.find_by(participation_id: @participation.id) %>
+<% unless my_fee.nil? %>
+  <div class="my-fee">
+    <h3>Vous avez demandé <%= my_fee.cost %> €</h3>
+    <p><%= my_fee.fee_contributions.size %> personnes participent</p>
+    <p>prix/personne : <%= my_fee.cost / (my_fee.fee_contributions.size + 1) %> €</p>
   </div>
+<% end %>
+
+<div class="container">
+  <% @fees.each do |fee| %>
+    <% unless fee == my_fee  %>
+      <div class="fee-card">
+        <%= render "fee_card", event: @event, fee: fee, participation: @participation %>
+      </div>
+    <% end %>
+  <% end %>
+
 </div>
 
 <script>

@@ -13,7 +13,7 @@ class FeesController < ApplicationController
     authorize policy_scope(Fee)
     @event = Event.find(params[:event_id])
     @fees = @event.fees
-    @participation = Participation.find_by user_id: current_user.id
+    @participation = Participation.find_by(user_id: current_user.id, event_id: @event.id)
   end
 
   def destroy

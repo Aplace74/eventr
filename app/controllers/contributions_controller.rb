@@ -27,8 +27,8 @@ class ContributionsController < ApplicationController
 
   def index
     @fee = Fee.new
-    @participation = Participation.find_by user_id: current_user.id
     @event = Event.find(params[:event_id])
+    @participation = Participation.find_by(user_id: current_user.id, event_id: @event.id)
     @map_url = (@event.address.split(" ") + @event.city.split(" ")).join("+")
     @contributions = @event.participations.where(user: current_user)[0].contributions
   end
