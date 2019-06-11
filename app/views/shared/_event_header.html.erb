@@ -5,7 +5,7 @@
       <h2><%= event.title %></h2>
       <p>
         <strong>Date:</strong>
-        <%= l(event.start_date, format: :custom) %> <%= "au #{l(event.end_date, format: :custom)}" if event.end_date > event.start_date %>
+        <%= l(event.start_date, format: :custom).capitalize %> <%= "au #{l(event.end_date, format: :custom)}" if event.end_date > event.start_date %>
       </p>
       <p><%= event.address %> à <%= event.city %></p>
     </div>

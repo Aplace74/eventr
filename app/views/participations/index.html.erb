@@ -1,3 +1,4 @@
+<% content_for :meta_title, "Participants | #{l(@event.start_date, format: :custom).capitalize} | #{@event.title} chez #{@event.user.first_name}" %>
 <%= render "shared/navbar", user: current_user %>
 <%= render "shared/event_header", event: @event, map_url: @map_url, agenda_url: @agenda_url %>
 <div class="text-center container">
