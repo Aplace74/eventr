@@ -13,7 +13,7 @@
     <p style="font-size: 14px; color: grey; margin: 2px"><%= rest %> restant(s)</p>
   <% end %>
   <div class="actions d-flex align-items-center">
-    <span>J'en prend </span>
+    <span>J'en prends : </span>
     <button class="btn incrementer minus" data-offset="-1"><i class="fas fa-minus-circle"></i></button>
     <span class="counter" data-count="<%= @contribution.nil? ? 0 : @contribution.part %>"><%= @contribution.nil? ? 0 : @contribution.part %></span>
     <button class="btn incrementer plus" data-offset="1"><i class="fas fa-plus-circle"></i></button>
