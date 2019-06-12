@@ -2,10 +2,10 @@
 <div class="main_container">
   <div class="banner_form">
     <div class="title_form", style="top: 5%">  
-      <h2>Modifier votre profile</h2>
+      <h2 style="margin-bottom: 0px">Modifier votre profile</h2>
     </div>
     
-    <div class="form", style="top: 20%">
+    <div class="form", style="top: 15%">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
         <div class="form-inputs">
@@ -29,12 +29,20 @@
                       required: true,
                       input_html: { autocomplete: "current-password" } %>
         </div>
+        <div class="form-group file optional user_avatar" style="margin-bottom: 0px">
+          <label class="file optional" for="user_avatar" style="margin-bottom: 0px">
+            <i class="fas fa-user-circle fa-5x text-center"></i>
+            <p style="margin-bottom: 0px">Une photo de vous</p>
+          </label>
+          <%= f.input :avatar_cache, as: :hidden %>
+          <%= f.input :avatar, label: false %>
+        </div>
         <div class="form-actions">
-          <%= f.button :submit, "Mettre à jour", class:"btn-base btn-blue btn-large" %>
+          <%= f.button :submit, "Mettre à jour", class:"btn-base btn-blue btn-large", style:"margin-bottom: 0px; margin-top: 0px" %>
         </div>
       <% end %>
       <p><%= link_to "Supprimer votre compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr ?" }, method: :delete %></p>
-      <%= link_to "Retour", :back, class:"btn-base btn-blue btn-large" %>
+      <%= link_to "Retour", :back, class:"btn-base btn-blue btn-large", style:"margin-bottom: 0px; margin-top: 0px" %>
     </div>
   
   
