@@ -9,7 +9,7 @@
   <div class="create-fee">
 
     <% if @participation.fee.nil? %>
-      <h3>Participation aux frais:</h3>
+      <h3>Participation aux frais :</h3>
       <form action="<%= event_fees_path(@event) %>" method="post">
         <label for="cost">J'ai dépensé :</label>
         <input type="number" name="cost">
@@ -21,9 +21,9 @@
       </form>
     <% else %>
       <a class="btn" data-toggle="collapse" href="#modif-form" role="button" aria-expanded="false" aria-controls="modif-form">
-        <h3 class="text-secondary">Vous avez dépensé <%= @participation.fee.cost %> €.
+        <h2 class="text-secondary">Vous avez dépensé : <%= @participation.fee.cost %> €
         <i class="fas fa-edit"></i>
-        </h3>
+        </h2>
       </a>
       <div class="collapse" id="modif-form">
         <%= form_for([@event, @participation.fee], method: :put) do %>
