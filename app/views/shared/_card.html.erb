@@ -5,11 +5,23 @@
 		<div class="pelette">
 			<div class="date">
 				<div class="p day"><%= event.start_date.strftime("%d") %></div>
-				<div class="p month"><%= event.start_date.strftime("%b") %></div>
+				<div class="p month"><%= l(event.start_date, format: :month) %></div>
 			</div>
 		</div>
 	</div>
 	<div class="infos">
+		<div class="contributions">
+			<h4>Vous ramenez:</h4>
+			<ul>
+      <% contributions = event.participations.where(user_id: current_user)[0].contributions %>
+        <% contributions.first(3).each do |contribution| %>
+        <li> - <%= contribution.supply.title %></li>
+        <% end %>
+        <% if contributions.size > 3 %>
+        <li>- ...</li>
+        <% end %>
+			</ul>
+		</div>
 		<div class="supplies">
 			<% @categories.each do |category| %>
 				<span class="badge-pill badge badge-dark">
@@ -24,7 +36,7 @@
 					<%= participant.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "avatar-bordered"}) :  cl_image_tag(participant.user.avatar, options = {class: "avatar-bordered"}) %>
 				<% end %>
 			</div>
-			<p>participant(s) </p>
+			<p> <%= event.participations.size %> participant(s) </p>
 		</div>
 	</div>
 	<div class="organizer">
