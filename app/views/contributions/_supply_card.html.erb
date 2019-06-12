@@ -7,7 +7,14 @@
       <% end %>
     </span>
   </div>
+  <div class="d-flex justify-content-between">
     <p style="font-size: 14px; color: <%= supply.rest == 0 ? "green" : "gray" %>; margin: 2px"><%= supply.rest %> restant(s)</p>
+    <div class="guests">
+      <% supply.contributions.first(4).each do |contribution| %>
+        <%= contribution.participation.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "avatar", size: "18", style: "margin-left: -10px; border: 1px solid white;"}) :  cl_image_tag(contribution.participation.user.avatar, options = {class: "avatar", size: "18", style: "margin-left: -10px; border: 1px solid white;"}) %>
+      <% end %>
+		</div>
+  </div>
   <div class="actions d-flex align-items-center">
     <span>J'en prend </span>
     <button class="btn incrementer minus" data-offset="-1"><i class="fas fa-minus-circle"></i></button>
@@ -19,7 +26,7 @@
         <%= hidden_field_tag :participation_id, participation.id %>
         <%= hidden_field_tag :supply_id, supply.id %>
         <input type="hidden" class="part" name="part" value="0">
-        <input type="submit" value="Prendre" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
+        <input type="submit" value="Valider" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
       <% end %>
     <% else %>
       <%= form_for([@event, contribution], method: :put, remote: true) do %>
@@ -27,7 +34,7 @@
         <%= hidden_field_tag :participation_id, participation.id %>
         <%= hidden_field_tag :supply_id, supply.id %>
         <input type="hidden" class="part" name="part" value="0">
-        <input type="submit" value="Prendre" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
+        <input type="submit" value="Valider" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
       <% end %>
     <% end %>
   </div>
