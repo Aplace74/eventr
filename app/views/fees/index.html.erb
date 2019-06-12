@@ -8,7 +8,7 @@
 <% my_fee = @fees.find_by(participation_id: @participation.id) %>
 <% unless my_fee.nil? %>
   <div class="my-fee">
-    <h3>Vous avez demandé : <%= my_fee.cost %> €</h3>
+    <h2>Vous avez demandé : <%= my_fee.cost %> €</h2>
     <p><%= my_fee.fee_contributions.size %> personnes participent</p>
     <p>Prix/personne : <%= my_fee.price_per_person %> €</p>
   </div>
