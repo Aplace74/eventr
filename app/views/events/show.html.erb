@@ -22,7 +22,7 @@
       <% supplies = category.category_supplies(@event) %>
       <div class="category">
         <a class="category-title" data-toggle="collapse" href="#<%= category.name %>" role="button" aria-expanded="false" aria-controls="<%= category.name %>">
-            <p><strong><%= category.name %></strong> ( <%= category.status(@event) %> / <%= supplies.size %> )</p>
+            <h3><strong><%= category.name %></strong> ( <%= category.status(@event) %> / <%= supplies.size %> )</h3>
             <i class="fas fa-plus"></i>
         </a>
         <div class="category-list collapse" id="<%= category.name %>">
