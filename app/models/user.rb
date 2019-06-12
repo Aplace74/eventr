@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :events
-  has_many :participations
+  has_many :participations, dependent: :destroy
   has_many :contributions, through: :participations
 
   validates :first_name, :last_name, :email, presence: true
