@@ -4,10 +4,10 @@
     <div>
       <h2><%= event.title %></h2>
       <p>
-        <strong>Date:</strong>
+        <i class="far fa-calendar-alt"></i> :
         <%= l(event.start_date, format: :custom).capitalize %> <%= "au #{l(event.end_date, format: :custom)}" if event.end_date > event.start_date %>
       </p>
-      <p><%= event.address %> à <%= event.city %></p>
+      <p><i class="fas fa-map-marked-alt"></i> : <%= event.address %> à <%= event.city %></p>
     </div>
     <div class="map d-flex flex-column justify-content-start">
     <%= link_to("https://www.google.com/maps/search/#{map_url}", target: "_blank") do %>
