@@ -1,6 +1,6 @@
 <% fee_contribution = participation.fee_contributions.find_by(fee_id: fee.id) %>
 
-<h3><%= fee.participation.user.first_name %> à payé <%= fee.cost %> €</h3>
+<h3><%= fee.participation.user.first_name %> a payé <%= fee.cost %> €</h3>
 <p><%= fee.fee_contributions.size %> personnes participent</p>
 <p>prix/personne : <%= fee.price_per_person %> €</p>
 <% if fee_contribution.nil? %>
@@ -12,6 +12,6 @@
   </form>
 <% else %>
   <%= link_to event_fee_contribution_path(event, fee_contribution), method: :delete, class: "m-0 btn-thin btn-base btn-red" do %>
-    Annuler participation
+    Annuler votre participation
   <% end %>
 <% end %>
