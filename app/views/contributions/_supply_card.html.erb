@@ -1,24 +1,20 @@
-<% @contribution = participation.contributions.find_by(supply_id: supply.id) %>
-
-<div class="supply-card" data-supply-id="<%= supply.id %>" data-rest="<%= supply.rest %>" data-part="<%= @contribution.nil? ? 0 : @contribution.part %>">
-  <strong><%= supply.quantity %> <%= supply.title %></strong>
-  <span class="mx-1">
-    <%= link_to event_supply_path(@event, supply), method: :delete, data: { confirm: "Êtes vous sûr ?" }, class: "text-decoration-none text-danger" do %>
-      <i class="fas fa-trash"></i>
-    <% end %>
-  </span>
-  <% if rest <= 0 %>
-    <p style="font-size: 14px; color: green; margin: 2px"><%= rest %> restant(s)</p>
-  <% else %>
-    <p style="font-size: 14px; color: grey; margin: 2px"><%= rest %> restant(s)</p>
-  <% end %>
+<div class="supply-card" data-supply-id="<%= supply.id %>" data-part="<%= contribution.nil? ? 0 : contribution.part %>">
+  <div class="d-flex justify-content-between">
+    <strong><%= supply.quantity %> <%= supply.title %></strong>
+    <span class="mx-1 text-right">
+      <%= link_to event_supply_path(@event, supply), remote: true , method: :delete, data: { confirm: "Êtes vous sûr ?" }, class: "text-decoration-none text-secondary" do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </span>
+  </div>
+    <p style="font-size: 14px; color: <%= supply.rest == 0 ? "green" : "gray" %>; margin: 2px"><%= supply.rest %> restant(s)</p>
   <div class="actions d-flex align-items-center">
     <span>J'en prend </span>
     <button class="btn incrementer minus" data-offset="-1"><i class="fas fa-minus-circle"></i></button>
-    <span class="counter" data-count="<%= @contribution.nil? ? 0 : @contribution.part %>"><%= @contribution.nil? ? 0 : @contribution.part %></span>
+    <span class="counter" data-rest="<%= supply.rest %>" data-count="<%= contribution.nil? ? 0 : contribution.part %>"><%= contribution.nil? ? 0 : contribution.part %></span>
     <button class="btn incrementer plus" data-offset="1"><i class="fas fa-plus-circle"></i></button>
-    <% if @contribution.nil? %>
-      <%= form_for([@event, Contribution.new]) do %>
+    <% if contribution.nil? %>
+      <%= form_for([@event, Contribution.new], remote: true) do %>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <%= hidden_field_tag :participation_id, participation.id %>
         <%= hidden_field_tag :supply_id, supply.id %>
@@ -26,7 +22,10 @@
         <input type="submit" value="Prendre" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
       <% end %>
     <% else %>
-      <%= form_for([@event, @contribution], method: :put) do %>
+      <%= form_for([@event, contribution], method: :put, remote: true) do %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :participation_id, participation.id %>
+        <%= hidden_field_tag :supply_id, supply.id %>
         <input type="hidden" class="part" name="part" value="0">
         <input type="submit" value="Prendre" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
       <% end %>
