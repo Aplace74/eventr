@@ -1,8 +1,6 @@
-function refreshCreateForm(innerHTML) {
+function refreshUpdateForm(innerHTML) {
   const supplyCard = document.querySelector("[data-supply-id='<%= @supply.id %>']");
   supplyCard.innerHTML = innerHTML;
+  refreshJs(supplyCard);
 }
-
-refreshCreateForm("<%= j render 'supply_card', supply: @supply, rest: @supply.rest, participation: @participation %>")
-
-bindEventListenersToCards()
+refreshUpdateForm('<%= j render "supply_card", supply: @supply, participation: @participation, contribution: @participation.contributions.find_by(supply_id: @supply.id)%>')

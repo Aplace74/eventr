@@ -11,7 +11,10 @@ class SuppliesController < ApplicationController
     @supply = Supply.find(params[:id])
     authorize @supply
     @supply.destroy
-    redirect_to event_path(@event)
+    respond_to do |format|
+      format.html { redirect_to event_path(@event) }
+      format.js
+    end
   end
 
   private

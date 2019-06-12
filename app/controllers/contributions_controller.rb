@@ -17,6 +17,8 @@ class ContributionsController < ApplicationController
   end
 
   def update
+    @participation = Participation.find(params[:participation_id])
+    @supply = Supply.find(params[:supply_id])
     @event = Event.find(params[:event_id])
     @contribution = Contribution.find(params[:id])
     @contribution.part = params[:part]
