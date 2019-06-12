@@ -3,11 +3,18 @@
 .div_logos {
   width: 100%;
   height: 100vh;
+  h2 {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .logo {
   width: 65px;
   height: 65px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .div_btn_footer {
@@ -18,3 +25,4 @@
 a:hover {
   text-decoration: none;
 }
+
