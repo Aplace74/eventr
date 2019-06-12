@@ -3,15 +3,15 @@
     <strong><%= supply.quantity %> <%= supply.title %></strong>
     <span class="mx-1 text-right">
       <%= link_to event_supply_path(@event, supply), remote: true , method: :delete, data: { confirm: "Êtes vous sûr ?" }, class: "text-decoration-none text-secondary" do %>
-        <i class="fas fa-trash"></i>
+        <strong><i class="fas fa-trash"></i></strong>
       <% end %>
     </span>
   </div>
   <div class="d-flex justify-content-between">
-    <p style="font-size: 14px; color: <%= supply.rest == 0 ? "green" : "gray" %>; margin: 2px"><%= supply.rest %> restant(s)</p>
+    <p style="font-size: 16px; color: <%= supply.rest == 0 ? "green" : "gray" %>; margin: 2px"><%= supply.rest %> restant(s)</p>
     <div class="guests">
       <% supply.contributions.first(4).each do |contribution| %>
-        <%= contribution.participation.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "avatar", size: "18", style: "margin-left: -10px; border: 1px solid white;"}) :  cl_image_tag(contribution.participation.user.avatar, options = {class: "avatar", size: "18", style: "margin-left: -10px; border: 1px solid white;"}) %>
+        <%= contribution.participation.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "avatar", size: "30", style: "margin-left: -10px; border: 1px solid white;"}) :  cl_image_tag(contribution.participation.user.avatar, options = {class: "avatar", size: "30", style: "margin-left: -10px; border: 1px solid white;"}) %>
       <% end %>
 		</div>
   </div>
@@ -34,7 +34,7 @@
         <%= hidden_field_tag :participation_id, participation.id %>
         <%= hidden_field_tag :supply_id, supply.id %>
         <input type="hidden" class="part" name="part" value="0">
-        <input type="submit" value="Valider" disabled="true" class="submit inactive btn-thin btn-base btn-blue" style="margin: 2px">
+        <input type="submit" value="Valider" disabled="true" class="submit inactive btn-base btn-blue" style="margin: 2px">
       <% end %>
     <% end %>
   </div>
