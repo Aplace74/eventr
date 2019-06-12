@@ -20,7 +20,7 @@
     </li>
     <li class="nav-item dropdown dropleft">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= cl_image_tag user.avatar, class: "avatar" %> 
+        <%= current_user.avatar.nil? || current_user.avatar.blank? ? image_tag("person-dummy.jpg", size: "40", class: "avatar") : cl_image_tag(user.avatar, class: "avatar") %> 
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <%= link_to "Modifier mon profile", edit_user_registration_path, class: "dropdown-item text-dark" %>
