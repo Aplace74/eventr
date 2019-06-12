@@ -4,7 +4,7 @@
 <%= render "shared/event_header", event: @event, map_url: @map_url, agenda_url: @agenda_url %>
 <div class="container">
   <div class="description p-3">
-    <p><i class="fas fa-info-circle"></i> : <%= @event.description %></p>
+    <p><i class="fas fa-info-circle"></i>  <%= @event.description %></p>
     <div class="text-center ml-1">      
       <%= @event.user.avatar.nil? || @event.user.avatar.blank? ? image_tag("person-dummy.jpg", size: "30", class: "avatar") : cl_image_tag(@event.user.avatar, class: "avatar", size: "30") %>
       <p><%= @event.user.first_name %></p>
