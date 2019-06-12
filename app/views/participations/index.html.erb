@@ -12,8 +12,10 @@
             </button>
         </div>
     <% end %>
-    <h1>Participants :</h1>
-    <div class="d-flex row guest-list">
+    <div class="guest-list">
+        <h2 class="text-secondary">Participants :</h2>
+    </div>
+    <div class="d-flex row guest-list">        
         <% @participants.each do |participant|%>
             <div class="col-4 my-4">
                 <% if participant.organizer%>
