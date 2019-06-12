@@ -16,15 +16,15 @@
     <% end %>
     <h1>Participants</h1>
     <div class="d-flex row guest-list">
-        <% @participants.each do |p|%>
-            <div class="col-4 my-4 <%= "d-none" if !p.confirmed %>">
-                <% if p.organizer%>
-                    <%= p.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "rounded-circle mb-3 shadow green-border"}) :  cl_image_tag(p.user.avatar, class: "rounded-circle mb-3 shadow green-border", transformation: {width: 72, height: 72, gravity: "face"}) %>
+        <% @participants.each do |participant|%>
+            <div class="col-4 my-4">
+                <% if participant.organizer%>
+                    <%= participant.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "rounded-circle mb-3 shadow green-border"}) :  cl_image_tag(participant.user.avatar, class: "rounded-circle mb-3 shadow green-border", transformation: {width: 72, height: 72, gravity: "face"}) %>
                 <%else%>
-                    <%= p.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "rounded-circle mb-3 shadow"}) :  cl_image_tag(p.user.avatar, class: "rounded-circle mb-3 shadow", transformation: {width: 72, height: 72, gravity: "face"}) %> 
+                    <%= participant.user.avatar.url.nil? ? image_tag("person-dummy.jpg", options = {class: "rounded-circle mb-3 shadow"}) :  cl_image_tag(participant.user.avatar, class: "rounded-circle mb-3 shadow", transformation: {width: 72, height: 72, gravity: "face"}) %> 
                 <%end%>
                 <br />
-			<%= p.user.first_name %><%= p " (organisateur)" if p.organizer%>
+			<span class="<%= "font-weight-bold" if participant.organizer %>"><%= participant.user.first_name %><%= " (organisateur)" if participant.organizer%></span>
 		</div>
 	<%end%>
 </div>
