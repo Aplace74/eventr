@@ -114,8 +114,8 @@ Participation.create!(
 anniversaire = Event.create!(
   description: "Je compte sur vous pour être présent",
   title: "25 ans Antoine",
-  start_date: Date.new(2019, 6, 12),
-  end_date: Date.new(2019, 6, 13),
+  start_date: Date.new(2019, 6, 29),
+  end_date: Date.new(2019, 6, 30),
   picture: "",
   address: "105 rue de la Monnaie",
   city: "Lille",
@@ -158,8 +158,8 @@ Participation.create!(
 juillet_14 = Event.create!(
   description: "Feu d'artifice à la grange",
   title: "14 juillet",
-  start_date: Date.new(2019, 7, 14),
-  end_date: Date.new(2019, 7, 15),
+  start_date: Date.new(2019, 7, 19),
+  end_date: Date.new(2019, 8, 1),
   picture: "",
   address: "100 rue des Petis",
   city: "Lomme",
