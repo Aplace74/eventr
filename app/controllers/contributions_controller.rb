@@ -36,7 +36,7 @@ class ContributionsController < ApplicationController
     @participation = Participation.find_by(user_id: current_user.id, event_id: @event.id)
     @map_url = @event.map_url
     @agenda_url = @event.agenda_url
-    @contributions = @event.participations.where(user: current_user)[0].contributions
+    @contributions = @participation.contributions
   end
 
   def change_state

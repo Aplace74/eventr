@@ -285,13 +285,6 @@ contrib_max = Contribution.create!(
   participation_id: part_max[:id],
 )
 
-contrib_aym = Contribution.create!(
-  part: 1,
-  state: true,
-  supply_id: music[:id],
-  participation_id: part_aym[:id],
-)
-
 contrib_chris = Contribution.create!(
   part: 3,
   state: true,

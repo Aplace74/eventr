@@ -5,21 +5,23 @@
 			<li>Vous n'avez encore rien dans votre liste</li>
 		<% else %>
 			<% contributions.each do |contribution| %>
-				<% id = contribution.id %>
-				<% if contribution.state && contribution.part > 0 %>
-					<li>
-						<input type="checkbox" id="<%= id %>" checked/>
-						<label class="toggle" for="<%= id %>"></label>
-						<%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
-						<%= contribution.supply.title %>
-					</li>
-				<% elsif contribution.part > 0 %>
-					<li>
-						<input type="checkbox" id="<%= id %>"/>
-						<label class="toggle" for="<%= id %>"></label>
-						<%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
-						<%= contribution.supply.title %>
-					</li>
+				<% if contribution.supply.event.id == @event.id %>
+					<% id = contribution.id %>
+					<% if contribution.state && contribution.part > 0 %>
+						<li>
+							<input type="checkbox" id="<%= id %>" checked/>
+							<label class="toggle" for="<%= id %>"></label>
+							<%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
+							<%= contribution.supply.title %>
+						</li>
+					<% elsif contribution.part > 0 %>
+						<li>
+							<input type="checkbox" id="<%= id %>"/>
+							<label class="toggle" for="<%= id %>"></label>
+							<%= "#{contribution.part} x " if contribution.supply.quantity > 1 %>
+							<%= contribution.supply.title %>
+						</li>
+					<% end %>
 				<% end %>
 			<% end %>
 		<% end %>
